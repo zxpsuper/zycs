@@ -1,0 +1,54 @@
+  <image src="{{adImgPath}}" class="ad" bindtap="showad"></image>
+  <view class="ad-detail {{adHidden}}">
+    <view class="ad-div">
+      <view>
+        <block>
+        <view class="ad-btn" bindtap="closeAd">×</view>
+          <import src="../../../templates/ad.wxml" />
+          <template is="ad" data="{{adDetail}}" />
+        </block>
+      </view>
+      <view class="copy-ad" bindtap="copyAd">
+        <text>复制网址</text>
+      </view>
+    </view>
+  </view>
+<!--全部-->
+<view hidden="{{currentTab!==0}}">
+  <view class="html">
+    <view class="body">
+      <view class="list-content">
+        <view class="normal-tips commen-split" style="font-size: 30rpx;">您共有
+          <text style="color:#F08080;">{{data.length}}</text>条爱心记录，当前页有
+          <text style="color:#5cb85c">{{data.length}}</text>条。</view>
+      </view>
+            <view class="ul2 flex">
+        <block wx:for="{{data}}" wx:key="item">
+          <view class="li-main">
+            <navigator url="/pages/project/happysixone/happy?id={{item._id}}">
+              <view class="li2">
+                <image src="{{item.project.imgPath}}" class="img"></image>
+                <view class="item-title">{{item.project.name}}</view>
+                <view class="item-time">{{item.ctime}}</view>
+                <view class="money-day flex">
+                  <view class="money">￥{{item.money}}</view>
+                  <view class="classname">
+                    已筹
+                    <text class="day">50</text>天
+                  </view>
+                  <!--<view class="invoice">索要收据</view>-->
+                </view>
+                
+                <view class="item-foot" wx:if="{{item.orderNo}}">
+                  <view class="">捐款编号:</view>
+                  <view class="">{{item.orderNo}}</view>
+                </view>
+                <view class="classname" wx:else></view>
+              </view>
+            </navigator>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

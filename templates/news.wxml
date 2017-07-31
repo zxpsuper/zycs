@@ -1,0 +1,20 @@
+<!--html to wxml模板-->
+<template name="htmltowxml">
+    <block wx:for="{{content}}"  wx:for-index="idy"  wx:for-item="cellData" wx:key="item">
+        <block  wx:if="{{cellData.type == 'view'}}">
+            <view class="p">
+                <block  wx:for="{{cellData.child}}" wx:key="text">
+                    <block  wx:if="{{item.type == 'a'}}">
+                        <text class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" bindtap="stockClick">{{item.text}}</text>
+                    </block>
+                    <block  wx:else>
+                        <text>{{item.text}}</text>
+                    </block>
+                </block>
+            </view>
+        </block>
+        <block wx:if="{{cellData.type == 'img'}}">
+            <image data-index="{{idy}}" style="width:100%"  mode="widthFix" src="{{cellData.attr.src}}" bindload="imageLoad"></image>
+        </block>
+    </block>
+</template>

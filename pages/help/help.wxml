@@ -1,0 +1,137 @@
+<view class="warn">
+  <view class="warn-icon"></view>
+  <text class="warn-tip">筹款时长默认30天，发布后随时提前结束</text>
+</view>
+<form class="form" bindsubmit="formSubmit">
+  <view class="form-list-title sp-icon eee">
+    <text class="text1">公益筹款</text>
+    <text class="introduce">筹款说明</text>
+    <!--<view class="sp-question"></view>-->
+  </view>
+  <view class="form-li flex">
+    <text class="text1">目标金额</text>
+    <input placeholder="请填写目标所需金额" class="input" name="tmoney" type="digit"/>
+    <text class="text1">元</text>
+  </view>
+  <view class="form-li flex">
+    <text class="text1">项目名称</text>
+    <input placeholder="填写项目名称（20字以内)" class="input" name="name"/>
+  </view>
+  <view class="li-bottom"></view>
+  <view class="form-list-title sp-icon eee">
+    <text class="text1 ">项目详情</text>
+  </view>
+  <textarea class="textarea" placeholder="项目内容：包含但不限于项目简介、为什么需要众筹资金支持、资金用途等。不得出现任何联系方式和银行卡等私人收款信息，否则项目验证不予通过。 " placeholder-style="font-size:30rpx;" maxlength="-1" name="explainText"/>
+  <!---1代表不限制长度-->
+ <view class="padding"></view>
+  <import src="../../templates/uploadimg.wxml" />
+  <template is="unloadimg" data="{{img}}" />
+  <view class="form-list-title sp-icon eee">
+    <text class="text1">联系人信息</text>
+  </view>
+  <view class="form-li">
+    <input placeholder="请输入姓名" class="input" name="linkName"/>
+  </view>
+  <view class="form-special border-bottom">
+    <input placeholder="请输入手机号码" class="input" name="phone" type="number" bindinput="phoneNum"/>
+  <view class="tip"><text>{{tip}}</text></view>
+  </view>
+ 
+  <view style="height:40rpx" class="eee"></view>
+  <view class="form-li text-center border-bottom">
+    <text class="prove">受助人证件证明</text>
+  </view>
+  <view class="eee flex height50">
+    <view class="icon2"></view>
+    <text class="text3">受助人证件证明未填写或填写不真实，项目验证不予通过。</text>
+  </view>
+  <view class="housediv">
+    <image src="../images/house.png" class="house"></image>
+    <text class="housetext">患者家庭房屋状况（选填）</text>
+  </view>
+  <view class="form-li flex">
+    <text class="text1">房产数量</text>
+    <input placeholder="请填写您的房屋数量" class="input" name="houseNum" type="number"/>
+  </view>
+  <view class="form-li flex">
+    <text class="text1">房产价值</text>
+    <input placeholder="请填写您的房屋价值" class="input" name="houseValue" type="number"/>
+  </view>
+  <view class="form-li flex border-bottom">
+    <text class="text1">房产状态</text>
+    <radio-group class="radio-group" bindchange="radioChange"  name='houseState'>
+      <label class="radio">
+        <radio value="未变卖" color="#00aac5"/>未变卖
+      </label>
+      <label class="radio">
+        <radio value="已变卖" color="#00aac5"/>已变卖
+      </label>
+    </radio-group>
+  </view>
+  <view style="height:40rpx" class="eee"></view>
+  <view class="housediv">
+    <image src="../images/car.png" class="house"></image>
+    <text class="housetext">患者家庭汽车财产状况（选填）</text>
+  </view>
+  <view class="form-li flex">
+    <text class="text1">汽车数量</text>
+    <input placeholder="请填写您的汽车数量" class="input" name="carNum" type="number"/>
+  </view>
+  <view class="form-li flex">
+    <text class="text1">汽车价值</text>
+    <input placeholder="请填写您的汽车价值" class="input" name="carValue" type="number"/>
+  </view>
+  <view class="form-li flex border-bottom">
+    <text class="text1">汽车状态</text>
+    <radio-group class="radio-group" bindchange="radioChange"  name="carState">
+      <label class="radio">
+        <radio value="未变卖" color="#00aac5"/>未变卖
+      </label>
+      <label class="radio">
+        <radio value="已变卖" color="#00aac5"/>已变卖
+      </label>
+    </radio-group>
+  </view>
+  <view style="height:40rpx" class="eee"></view>
+  <view class="housediv">
+    <image src="../images/insurance.png" class="house"></image>
+    <text class="housetext">是否购买商业重疾保险（选填）</text>
+    <switch type="switch" class="switch" color="#00aac5" name="seriousInsurance"/>
+  </view>
+  <view class="housediv border-bottom">
+    <image src="../images/insurance.png" class="house"></image>
+    <text class="housetext">是否按时交纳医保（选填）</text>
+    <switch type="switch" class="switch" color="#00aac5" name="medicalInsurance"/>
+  </view>
+  <view style="height:40rpx" class="eee"></view>
+  <view class="form-li flex border-bottom">
+    <view class="code" bindtap="reflesh" wx:if="{{serve===1}}">
+      <canvas canvas-id="my-canvas" style="width: 260rpx; height: 86rpx;z-index:1" />
+    </view>
+    <view class="classname" wx:else></view>
+    <input placeholder="请输入验证码" class="input" name="code" bindinput="code"/>
+  </view>
+  <view style="height:40rpx" class="eee"></view>
+  <view class="foot">
+  <radio-group bindchange="radio">
+    <radio color="#00aac5" name="agree" checked="{{checked}}"/>
+      <text class="text1">已经阅读并同意平台的</text>
+  </radio-group>
+  <view bindtap="serve" class="serve"><text>《服务条款》</text></view>
+  </view>
+  <button class="submit" formType="submit">提交求助</button>
+</form>
+<view hidden="{{serve===1}}" class="serve-div">
+  <view class="serve-content">
+   <view class="serve-title flex">
+    <text>服务条款</text>
+    <view class="serve-btn" bindtap="close">×</view>
+   </view>
+   <view class="serve-body">
+    <view>本协议双方为广州众益慈善促进会（简称“众益慈善”或“众益众筹”）与众益众筹项目发起人（简称“您”或“用户”）。您在众益众筹发起项目之前，请务必认真阅读本协议的全部内容。本协议一经您点击确认并同意接受，即在您与广州众益慈善促进会之间产生法律效力。</view><view>一、用户的要求</view><view>1.用户承诺并保证自身是具有完全民事行为能力和完全民事权利能力的自然人、法人或其它组织。</view><view>2.用户保证所填写的用户信息是真实、准确、完整、及时的，无任何引人误解或者虚假的陈述，保证众益众筹可以通过用户所填写的联系方式与用户取得联系。</view><view>3.用户应根据众益众筹对相关服务的要求及时提供相应的身份证明等资料，否则众益众筹有权拒绝向该用户提供相关服务。</view><view>4.用户承诺将及时更新其用户信息以维持该等信息的有效、完整、真实、准确。</view><view>二、本协议的构成及效力</view><view>1.所有众益众筹已经发布的或将来发布的各类规则，作为本协议不可分割的一部分，与本协议具有同等的法律效力。</view><view>2.众益众筹有权根据需要适时修订本协议及各类规则，并在网站上公示。变更后的协议和规则一经修改并公示，即发生法律效力。</view><view>3.在使用众益众筹提供的服务之前，请务必认真阅读本协议的全部内容。如您对本协议有任何疑问，可向众益众筹咨询。本协议生效后，您不应以未阅读或不接受本协议的内容为由，主张本协议无效或要求撤销本协议。</view><view>4.您应该按照本协议约定行使权利并履行义务。如您不能接受本协议的约定，包括但不限于不能接受修订后的协议及各类规则，则您应立即停止使用众益众筹对项目发起人提供的服务。如您继续使用众益众筹针对项目发起人提供的服务，则表示您同意并接受本协议及各类规则的约束。</view><view>三、项目发起人的资格</view><view>1.作为项目发起人，您应为众益众筹微信服务号的关注用户，完全理解并接受本协议。</view><view>2.作为项目发起人的单位应为依法成立并登记备案的企业法人或其他组织；作为项目发起人的个人，应为年满18周岁并具有完全民事行为能力和民事权利能力的自然人，如项目发起人未满18周岁，应由其监护人代为履行本协议权利和义务。</view><view>3.您应按照众益众筹的要求，进行必要的身份认证和资质认证，包括但不限于身份证、护照、学历证明等的认证。</view><view>4.用户应向众益众筹提供邮箱地址及其他联络方式，并保证联络方式的真实性、完整性、及时性。联络方式不真实、不完整、变更后未及时通知以及用户用于接受众益众筹筹邮件的电子邮箱安全性、稳定性不佳而导致的一切后果，用户应自行承担责任。</view><view>5.您应妥善保管在微信中关注的众益众筹官方服务号的微信账号，凡使用您的微信账号在众益众筹进行的一切操作，均视为您本人的行为，一切责任由您本人承担。</view><view>四、发起的众筹项目应符合以下要求</view><view>1.您在众益众筹上发起的项目，应明确具体的开始时间和结束时间。截止项目结束时间，如项目发起人无法在指定时间内提交完整资料信息或提交虚假信息，则项目众筹失败；如项目发起人在指定时间内提交资料完整真实，则项目众筹成功。</view><view>2.您发起的项目不得包含非法、色情、淫秽、暴力等内容，不得含有攻击性、侮辱性言论，不得涉及种族主义、宗教极端主义、恐怖主义等内容。不得含有违反国家法律法规、政策的内容及其他众益众筹认为不适宜的内容。</view><view>3.您发起的项目不得利用众益众筹所募集的资金进行货币资本经营或其他金融业务，如：发放贷款、外汇买卖等涉嫌非法吸收公众存款的行为。</view><view>4.您应对您发起的项目进行介绍，并向项目支持者充分说明项目存在的风险及挑战，以便于项目支持者对项目有全面充分的了解，从而独立慎重作出是否支持的决定。</view><view>5.您发起的项目内容应真实、完整、合理，具有可行性。</view><view>6.您发起的项目不应与第三方存在任何权利纠纷，否则因此导致的一切损失（包括众益众筹因此被第三方权利追索而遭受的一切损失）由您本人承担，与众益众筹无关。</view><view>7.您发起的项目需提交包括但不限于身份证、医院证明、村（居）委证明等资料供众益慈善审核。如果您提交的信息不完整，众益慈善将通过不同方式与您沟通完善信息；如果您的信息不真实或不符合要求，众益慈善将无法通过您的发起申请。</view><view>8.在项目发起后的运行过程中，您应及时回复网友的提问，与项目支持者进行充分互动，促成项目筹资成功。</view><view>9.项目发起后，您应及时更新项目进展情况，包括但不限于以照片、视频、素描等方式展示项目的进度信息。</view><view>五、项目结束</view><view>1.您在发起项目时，已明确您的项目结束时间，届时无论项目筹集金额是否达到预定目标筹款，在制定时间内，若项目发起人提交完整真实的资料信息则项目众筹成功，筹集金额将汇入对应账户；若项目发起人无法提交完整信息或提交信息不真实，则项目众筹失败，已筹金额将退还给项目支持者。</view><view>2.众益众筹中救助病患的筹款金额只会分批分次拨给与患者对接的医院对公账号。助贫的筹款金额将分阶段拨给对应的受助者。</view><view>3.如项目成功，您应在三十个自然日内补全资料信息，由仲裁委人员与您核实身份。如您未按要求操作导致的提现失败，与众益众筹无关。该项目将视为众筹不成功，众筹款项将退回支持者账户。</view><view>4.您与第三方发生的纠纷矛盾，由您承担一切责任，与众益众筹无关。</view><view>5.项目成功后，所筹款项将按批次汇款到相应医院银行对公账号。如项目所筹金额有结余，则结余金额转到下一位救助者。</view><view>六、协议终止</view><view>1.以下任一情形出现，本协议即终止</view><view>（1）您发起的项目违反了国家法律法规、政策或众益众筹的平台使用规则或本协议约定，众益众筹停止为您提供服务的；</view><view>（2）您本人不同意接受本协议约定（含众益众筹发布的各类规则），并停止使用众益众筹针对项目发起人提供的服务的；</view><view>（3）您不符合本协议约定的项目发起人应具备的资格的；</view><view>（4）其他原因导致本协议终止的。</view><view>2.本协议终止后，不影响您因在本协议终止前的行为应承担的义务和责任。</view><view>七、本协议的解释权归广州众益慈善促进会所有。</view>
+   </view>
+   <view class="serve-foot">
+    <view class="iagree" bindtap="aclose">我同意</view>
+   </view>
+  </view>
+</view>

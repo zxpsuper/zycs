@@ -1,0 +1,45 @@
+
+<import src="/pages/foot.wxml" />
+
+<view class="html">
+    <view class="body fnav-wrapper">
+        <view class="order-detail">
+            <view class="order-decor"></view>
+        </view>
+        <view class="order-main">
+            <view class="o-wrap">
+                <view class="o-content">
+                    <view class="group-inline vtop all-text">
+                        <view class="group-row">
+                            <text class="group-cell">捐赠编号：</text>
+                            <text class="group-cell">{{data.orderNo}}</text>
+                        </view>
+                        <view class="group-row">
+                            <text class="group-cell">项目名称：</text>
+                            <navigator url="/pages/details/details?id={{data.projectId}}">
+                                <text class="group-cell">{{data.project.name}}</text>
+                            </navigator>
+                        </view>
+                        <view class="group-row">
+                            <text class="group-cell">捐款金额：</text>
+                            <text class="group-cell" style="color:#F08080">￥{{data.money}}</text>
+                        </view>
+                        <view class="group-row">
+                            <text class="group-cell">捐款时间：</text>
+                            <text class="group-cell">{{data.ctime}}</text>
+                        </view>
+                        <view class="group-row">
+                            <text class="group-cell">支付状态：</text>
+                            <text class="group-cell">支付成功</text>
+                        </view>
+                        <view class="group-row">
+                            <text class="group-cell">支付方式：</text>
+                            <text class="group-cell">微信支付</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="foot"></template>

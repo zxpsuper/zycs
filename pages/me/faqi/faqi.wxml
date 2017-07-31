@@ -1,0 +1,99 @@
+ <image src="http://zcsaas-pub.oss-cn-hangzhou.aliyuncs.com/test/undefined/1497924128813kb7b.png" class="ad"></image>
+<view class="navbar">  
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+</view>  
+<!--全部-->
+<view hidden="{{currentTab!==0}}">  
+    <view class="html">
+        <view class="body">
+            <view class="list-content">
+                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{data.length}}</text>个。</view>
+            </view>
+            <view class="conter">
+                <block wx:for="{{data}}" wx:key="item">
+                    <view class=" ">
+                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
+                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
+                            <text wx:if="{{item.state == 1}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(253,185,48,0.8);color:#fff">待审核中</text>
+                            <text wx:elif="{{item.state == 2}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(190,20,20,0.8);color:#fff">审核通过</text>  
+                            <text wx:elif="{{item.state == 3}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(104,213,107,0.8);color:#fff">审核不通过</text>
+                            <text wx:else="{{item.state == 4}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(0,0,0,0.8);color:#fff">未审批</text>
+                        </image>
+                        <view class="info">
+                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
+                        <view class="basic-wrapperr">
+                            <view class="row">
+                            <view class="col-4">申请时间:{{item.ctime}}</view>
+                            </view>
+                        </view>
+                        </view>
+                    </navigator>
+                    </view>
+                </block>
+            </view>
+            <template is="foot"></template>
+        </view>
+    </view>
+</view>
+
+<!--未审核-->
+<view hidden="{{currentTab!==1}}">  
+    <view class="html">
+        <view class="body">
+            <view class="list-content">
+                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{notData.length}}</text>个。</view>
+            </view>
+            <view class="conter">
+                <block wx:for="{{notData}}" wx:key="item">
+                    <view class=" ">
+                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
+                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
+                            <text style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(0,0,0,0.8);color:#fff">未审批</text>
+                        </image>
+                        <view class="info">
+                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
+                        <view class="basic-wrapperr">
+                            <view class="row">
+                            <view class="col-4">申请时间:{{item.ctime}}</view>
+                            </view>
+                        </view>
+                        </view>
+                    </navigator>
+                    </view>
+                </block>
+            </view>
+            <template is="foot"></template>
+        </view>
+    </view>
+</view>
+<!--已审核-->
+<view hidden="{{currentTab!==2}}">  
+    <view class="html">
+        <view class="body">
+            <view class="list-content">
+                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{hasData.length}}</text>个。</view>
+            </view>
+            <view class="conter">
+                <block wx:for="{{hasData}}" wx:key="item">
+                    <view class=" ">
+                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
+                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
+                            <text wx:if="{{item.state == 2}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(190,20,20,0.8);color:#fff">审核通过</text>  
+                            <text wx:elif="{{item.state == 3}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(104,213,107,0.8);color:#fff">审核不通过</text>
+                        </image>
+                        <view class="info">
+                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
+                        <view class="basic-wrapperr">
+                            <view class="row">
+                            <view class="col-4">申请时间:{{item.ctime}}</view>
+                            </view>
+                        </view>
+                        </view>
+                    </navigator>
+                    </view>
+                </block>
+            </view>
+            <template is="foot"></template>
+        </view>
+    </view>
+</view>

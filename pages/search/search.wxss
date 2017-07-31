@@ -1,0 +1,100 @@
+.top-search{
+  width: 100%;
+  height: 136rpx;
+  padding: 16rpx 24rpx 0 24rpx;
+}
+.input-box{
+  padding:24rpx 24rpx;
+  height: 70rpx;
+  width: 700rpx;
+}
+input{
+  width: 636rpx;
+  height: 65rpx;
+}
+.recommend{
+  width: 360rpx;
+  height: 480rpx;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 14rpx;
+  margin-left: 10rpx;
+}
+.recommendimg{
+  width: 100%;
+  height: 240rpx;
+  padding:0 0 8rpx 0;
+
+}
+.rectext{
+  margin: 0 10rpx 0 8rpx;
+  flex: 1;
+  color: #000000;
+}
+.flex{
+  display: -webkit-flex;
+}
+.progress{
+  margin: 12rpx 0 30rpx 8rpx;
+}
+.progresslg{
+  width: 260rpx;
+  height: 12rpx;
+  background: #cccccc;
+  flex: 5;
+  margin-top:14rpx;
+  margin-right:8rpx;
+
+}
+.progresssm{
+  background: #1296db;
+  height: 12rpx;
+}
+.percent text{
+  margin-right: 8rpx;
+}
+.detail{
+  display: -webkit-flex;
+  width: 100%;
+  font-size:27rpx;
+  line-height:42rpx;
+}
+.detail1{
+  flex: 1;
+  text-align: center;
+}
+.number{
+  color:#00aac5;
+}
+.italic{
+  font-style: italic;
+  color: #afe4ed;
+}
+.txt{
+  color: #bcbbbb;
+}
+.border{
+  border-left: 0.5rpx solid #a1eef5;
+}
+.flex1{
+  flex: 1;
+}
+.coltext{
+  font-size: 30rpx;
+  padding-top: 20rpx;
+  color: #000000;
+  padding-left: 8rpx;
+}
+.detail2{
+   font-size:27rpx;
+  line-height:42rpx;
+  margin-top:30rpx;
+}
+.collection{
+  width: 360rpx;
+  height: 420rpx;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 14rpx;
+  margin-left: 10rpx;
+}

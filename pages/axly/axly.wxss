@@ -1,0 +1,122 @@
+.project {
+  padding: 30rpx 20rpx;
+  width: 710rpx;
+  height: 250rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.project-image {
+  width: 310rpx;
+  height: 240rpx;
+  border-radius: 16rpx;
+  background-color: #aaa;
+  margin-right: 20rpx;
+}
+
+.project-name {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.hope {
+  background: #fff;
+}
+
+.love-message {
+  margin-top: 8rpx;
+  margin-bottom: 0.8rpx;
+  font-size: 26rpx;
+  color: #796f6f;
+}
+
+.title {
+  width: 710rpx;
+  height: 60rpx;
+  padding-top: 30rpx;
+  padding-bottom: 12rpx;
+  color: #000;
+  font-weight: 600;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.textarea {
+  width: 686rpx;
+  height: 134rpx;
+  padding: 16rpx 14rpx;
+  color: #666;
+  padding-bottom: 36rpx;
+}
+
+.form {
+  width: 710rpx;
+  padding: 20rpx;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.button {
+  width: 160rpx;
+  height: 62rpx;
+  padding: 8rpx 24rpx;
+  margin: 4rpx 12rpx;
+  color: #fff;
+  background-color: #00aac5;
+  border-color: #00b2ee;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  line-height: 50rpx;
+  position: relative;
+  left: 70%;
+}
+
+.btndiv {
+  width: 710rpx;
+  height: 72rpx;
+  padding-top: 20rpx;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.img {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.message {
+  padding: 20rpx;
+
+  color: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #e3e3e3;
+  background: #fff;
+}
+
+.name {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.word {
+  padding: 12rpx;
+  color: #aaa;
+  background-color: #f9f9f9;
+  font-size:28rpx;
+margin:16rpx 0;
+
+}
+
+.time {
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+  text-align: right;
+  font-size: 26rpx;
+  color: #aaa;
+}
+
+.textbottom {
+  height: 2rpx;
+  border-top: 1px solid #e3e3e3;
+}

@@ -1,0 +1,191 @@
+/**index.wxss**/
+
+.slide-image {
+  width: 100%;
+  height: 400rpx;
+}
+
+swiper {
+  height: 375rpx;
+}
+
+.btn-group {
+  display: -webkit-flex;
+  width: 100%;
+  justify-content: center;
+  background: #fff;
+  height: 200rpx;
+  padding-bottom: 14rpx;
+}
+
+.btn-image {
+  flex: 1;
+  margin: 0 20rpx;
+  padding-top: 24rpx;
+  border-radius: 5px;
+}
+
+.btn-image image {
+  width: 90%;
+  height: 68%;
+}
+
+.btn-image:first-child {
+  margin-left: 40rpx;
+}
+
+.btn-image:nth-child(4) {
+  margin-right: 40rpx;
+}
+
+.btn-image text {
+  padding-left: 5rpx;
+  color: #666;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+navigator {
+  height: 160rpx;
+  margin: 10rpx;
+}
+
+.body {
+  background-color: #f9f9f9;
+  color: #666;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  word-wrap: break-word;
+  max-width: 640px;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.title {
+  background-image: url();
+  width: 100%;
+  height: 91rpx;
+  line-height: 91rpx;
+  text-align: center;
+  background: #fff;
+  margin: 16rpx 0;
+}
+
+.title text {
+  font-weight: bold;
+  color: #000;
+}
+
+.arrow {
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: 7rpx;
+  left: 7rpx;
+}
+
+.recommend {
+  width: 360rpx;
+  height: 460rpx;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 14rpx;
+  margin-left: 10rpx;
+}
+
+.recommendimg {
+  width: 100%;
+  height: 240rpx;
+  padding: 0 0 8rpx 0;
+}
+
+.rectext {
+  margin: 0 10rpx 0 8rpx;
+  flex: 1;
+  color: #000;
+}
+
+.flex {
+  display: -webkit-flex;
+}
+
+.progress {
+  margin: 12rpx 0 30rpx 8rpx;
+}
+
+.progresslg {
+  width: 260rpx;
+  height: 12rpx;
+  background: #ccc;
+  flex: 5;
+  margin-top: 14rpx;
+  margin-right: 8rpx;
+}
+
+.progresssm {
+  background: #1296db;
+  height: 12rpx;
+}
+
+.percent text {
+  margin-right: 8rpx;
+}
+
+.detail {
+  display: -webkit-flex;
+  width: 100%;
+  font-size: 27rpx;
+  line-height: 42rpx;
+}
+
+.detail1 {
+  flex: 1;
+  text-align: center;
+}
+
+.number {
+  color: #00aac5;
+}
+
+.italic {
+  font-style: italic;
+  color: #afe4ed;
+}
+
+.txt {
+  color: #bcbbbb;
+}
+
+.border {
+  border-left: 0.5rpx solid #a1eef5;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.coltext {
+  font-size: 30rpx;
+  padding-top: 20rpx;
+  color: #000;
+  padding-left: 8rpx;
+}
+
+.detail2 {
+  font-size: 27rpx;
+  line-height: 42rpx;
+  margin-top: 30rpx;
+}
+
+.collection {
+  width: 360rpx;
+  height: 420rpx;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 14rpx;
+  margin-left: 10rpx;
+}
+
+.nav {
+  margin: 0;
+}

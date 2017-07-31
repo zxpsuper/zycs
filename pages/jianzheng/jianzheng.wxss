@@ -1,0 +1,79 @@
+/* pages/jianzheng/jianzheng.wxss */
+.body{
+  background: #f9f9f9
+}
+.thank{
+font-size:28rpx;
+color:#ccc;
+padding:10rpx 20rpx;
+
+}
+.project{
+  width: 710rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.img{
+  width: 300rpx;
+  height: 250rpx;
+  border-radius: 40rpx;
+}
+
+.name{
+  font-size: 32rpx;
+  color: #000;
+}
+
+.see-text{
+  color: #c3c3c3;
+  font-size: 28rpx;
+}
+
+.number{
+  color: #eee;
+}
+.detail{
+  padding: 20rpx;
+}
+.relative{
+margin-top:20rpx;
+font-size:32rpx;
+height:60rpx;
+line-height: 60rpx;
+padding:10rpx 20rpx;
+background:#fff;
+position:relative;
+
+}
+
+.triangle-up {
+width:0;
+height:0;
+border-left:10rpx solid transparent;
+border-right:10rpx solid transparent;
+border-top:20rpx solid #000;
+position:absolute;
+right:25px;
+top:26rpx;
+
+}
+picker {
+display:block;
+position:absolute;
+right:80rpx;
+
+}
+
+.title{
+ margin:20rpx 0;
+background:#fff;
+padding:16rpx;
+border-top:2rpx solid #eee;
+border-bottom:2rpx solid #eee;
+font-size:32rpx;
+
+}
+textarea{
+  padding: 20rpx;
+}

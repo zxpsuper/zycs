@@ -1,0 +1,73 @@
+  <image src="{{adImgPath}}" class="ad" bindtap="showad"></image>
+  <view class="ad-detail {{adHidden}}">
+    <view class="ad-div">
+      <view>
+        <block>
+        <view class="ad-btn" bindtap="closeAd">×</view>
+          <import src="../../templates/ad.wxml" />
+          <template is="ad" data="{{adDetail}}" />
+        </block>
+      </view>
+      <view class="copy-ad" bindtap="copyAd">
+        <text>去瞧瞧！</text>
+      </view>
+    </view>
+  </view>
+<view class="home">
+  <view class="top">
+    <view class="user-info">
+      <view class="user-name">
+        <view  bindtap="bindViewTap" class="userinfo">
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+          <text class="thankyou">感恩爱的路上有您</text>
+        </view>
+      </view>
+      <view class="basic-wrapper">
+        <view class="flex detail">
+        <navigator url="/pages/me/axjl/axjl?id={{data.id}}" class="love">
+          <view>
+            <view class="number">
+            <view class="yellow">{{data.myLoveRecord}}<text>次</text></view>
+            </view>
+            <view class="foottext">爱心记录</view>
+          </view>
+        </navigator>
+        <navigator url="/pages/me/details/details?id=support" class="love">
+          <view>
+            <view class="number">
+            <view class="yellow">{{data.mySupportProjectCount}}<text>次</text></view>
+            </view>
+            <view class="foottext">已支持</view>
+          </view>
+        </navigator>
+        <view class="love">
+          <view class="number">
+          <view class="yellow">{{data.donationMoney}}<text>元</text></view>
+          </view>
+          <view class="foottext">已捐献</view>
+        </view>   
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ul" >
+    <block wx:for="{{userinfo2}}" wx:key="item">
+      <navigator url="{{item.url}}">
+        <view class="li">
+          <image src="{{item.src}}" class="userimg"></image>
+          <text class="usertext">{{item.text}}</text>
+          <image src="http://ui.zc.gongyicishan.net/wx-ui/images/arrow-r.png" class="arrow"></image>
+        </view>
+      </navigator>
+    </block>
+    <view class="libottom"></view>
+  </view>
+  <navigator url="/pages/me/advice/advice">
+    <view class="li advice">
+      <image src="http://ui.zc.gongyicishan.net/wx-ui/images/complaint.png?ts=v1" class="userimg"></image>
+      <text class="usertext">投诉建议</text>
+      <image src="http://ui.zc.gongyicishan.net/wx-ui/images/arrow-r.png" class="arrow"></image>
+    </view>
+  </navigator>
+</view>

@@ -1,0 +1,281 @@
+<view style="height:{{height}};overflow:hidden">
+  <image src="{{adImgPath}}" class="ad" bindtap="showad"></image>
+  <view class="ad-detail {{adHidden}}">
+    <view class="ad-div">
+      <view>
+        <block>
+        <view class="ad-btn" bindtap="closeAd">×</view>
+          <import src="../../../templates/ad.wxml" />
+          <template is="ad" data="{{adDetail}}" />
+        </block>
+      </view>
+      <view class="copy-ad" bindtap="copyAd">
+        <text>复制网址</text>
+      </view>
+    </view>
+  </view>
+  <!--蓝色标题栏-->
+  <view class="topbar flex justify">
+    <image src="http://ui.zc.gongyicishan.net/wx-ui/images/icon-back.png" class="icon-back"></image>
+    <text class="topbar-text" bindtap="back">首页</text>
+    <image src="http://ui.zc.gongyicishan.net/wx-ui/images/logo-cat.png" class="logo-cat"></image>
+    <navigator url="../../jubao/jubao?id={{id}}&name={{project.name}}"><text class="topbar-text">举报</text></navigator>
+  </view>
+  <view class="basic-wrapper flex">
+    <image src="http://zcsaas-pub.oss-cn-hangzhou.aliyuncs.com/test/zy/1493282415734kla9.gif" class="org-name"></image>
+    <text class="org-text">众益慈善</text>
+    <view class="orggroup">
+      <text class="org-text1">已筹<text class="day">{{project.stime}}</text>天</text>
+      <text class="org-tag">公益组织</text>
+    </view>
+  </view>
+  <view class="pro-name" wx:if="{{project.type === '1'}}">
+    <view class="basic-wrapper1">
+      <view class="title">{{project.name}}</view>
+      <view class="progress">
+        <view class="progresssm" style="width:{{percent}}"></view>
+      </view>
+      <view class="textSm">
+        <text>目标金额
+          <text class="money">{{project.tmoney}}</text>元</text>
+      </view> 
+      <view class="data flex">
+        <view class="data1 border">
+          <view class="">
+            <text class="blue-text">{{project.dmoney}}</text>元
+          </view>
+          <view class="text1">已筹金额</view>
+        </view>
+        <view class="data1">
+          <view class="">
+            <text class="blue-text">{{project.donation.doCount}}</text>次
+          </view>
+          <view class="text1">支持次数</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="pro-name">
+    <view class="basic-wrapper1">
+      <view class="title">{{project.name}}</view>
+      <view class="data flex">
+        <view class="data1 border">
+          <view class="">
+            <text class="blue-text">{{project.dmoney}}</text>元
+          </view>
+          <view class="text1">已筹金额</view>
+        </view>
+        <view class="data1">
+          <view class="">
+            <text class="blue-text">{{project.donation.doCount}}</text>次
+          </view>
+          <view class="text1">支持次数</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--项目主图-->
+  <view class="image">
+    <image src="{{project.imgPath}}" mode="scaleToFill"></image>
+  </view>
+  <view class="title2">项目详情</view>
+  <!--项目详情-->
+  <view class="project-detail" style="height:{{height1}};overflow:hidden">
+    <import src="../../../templates/news.wxml" />
+    <template is="htmltowxml" data="{{content}}" />
+  </view>
+  <view class="readmore {{readhidden}}" bindtap="readmore">
+   <text>查看详情</text>
+  </view>
+  <!--项目咨询-->
+  <!--机构介绍-->
+  <view class="company">
+    <view class="company-title">善款接收及项目执行机构</view>
+    <!--众益介绍-->
+    <view class="company-detail">
+      <view class="company-titlesm">
+        <text>执行机构</text>
+      </view>
+      <view class="classname">
+        <text class="text-main">单位：广州众益慈善促进会</text>
+      </view>
+      <view class="section" bindtap="telz">
+        <text class="text-main">电话：<text class="phone">020-31123061</text>
+        </text>
+      </view>
+      <view class="company-titlesm">
+        <text>众益慈善</text>
+      </view>
+      <view class="section">
+        <text class="text-main">众益慈善全称广州众益慈善促进会，由广州社会组织管理局批准成立，具有从事公益慈善资金募集的法律资格。</text>
+      </view>
+      <view class="company-titlesm">
+        <text>众益目标</text>
+      </view>
+      <view class="section">
+        <text class="text-main">搭建公益平台，汇集社会慈善力量，在先心病救治、免费午餐、大病救治、公益人才培养等领域，积极奉献力量。</text>
+      </view>
+      <view class="company-titlesm">
+        <text>众益承诺</text>
+      </view>
+      <view class="section">
+        <text class="text-main">所有善款直接进入广州众益慈善促进会对公账户，100%用于被资助者。无任何管理费、交易费和其他中间费用。</text>
+      </view>
+      <view class="section">
+        <text class="text-main">大病患者求助项目的资金流转会在受助者以及公众的监督下直接打入医院的对公账号，并在单据中进行公开。项目款项如有结余，将会100%用于下一位受助者。</text>
+      </view>
+      <view class="section">
+        <text class="text-main">（微信支付单笔限额5000元，每日次数不限；向广州众益慈善促进会微信支付账号捐赠，无任何手续费。）</text>
+      </view>
+    </view>
+  </view>
+  <!--模板-->
+  <!--实名见证-->
+  <view class="model">
+    <view class="model-title flex">
+      <text class="modeltitle-text">
+        实名见证
+      </text>
+      <!--<navigator url="/pages/jianzheng/jianzheng?id={{id}}&&name={{project.name}}&&num={{project.vipcheck.list.length}}&&src={{project.imgPath}}" class="blue-text2"><text>我要见证</text></navigator>-->
+    </view>
+    <view class="vipcheck">
+      <view class="bar flex" >
+      <view wx:for="{{project.vipcheck.list}}" wx:key="unique">
+        <image  wx:key="item" data-haha="{{index}}" class="li {{currentTab==index ? 'onvip' : ''}}" bindtap="navbarTap" src="{{item.user.headimgurl}}"></image>
+        <view class="triangle-up {{currentTab==index?'show':'hidden'}}"></view>
+      </view>
+      </view>
+      <view class="classname" wx:if="{{project.vipcheck.list.length===0}}"></view>
+      <view class="classname" wx:else>
+        <view class="vipcheck-text" hidden="{{currentTab!==0}}">{{project.vipcheck.list[0].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==1}}">{{project.vipcheck.list[1].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==2}}">{{project.vipcheck.list[2].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==3}}">{{project.vipcheck.list[3].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==4}}">{{project.vipcheck.list[4].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==5}}">{{project.vipcheck.list[5].vipcheckText}}</view>
+      </view>
+    </view>
+  </view>
+  <!--项目进展-->
+  <view class="model">
+    <view class="model-title flex">
+      <text class="modeltitle-text">
+        项目进展
+      </text>
+      <text class="blue-text2">{{project.progress.proCount}}项进展</text>
+    </view>
+    <view class="system-message">
+      <!--系统消息-->
+      <view class="classname" wx:if="{{project.progress.proCount===0}}"></view>
+      <view class="classname" wx:else>
+        <view class="system">
+          <view class="systemMessagelogo"></view>
+          <text>系统消息</text>
+        </view>
+        <view class="sys-message" wx:for="{{project.progress.list}}" wx:key="item">
+          <image src="http://ui.zc.gongyicishan.net/wx-ui/images/prog-type.png" class="smimg"></image>
+          <view class="sys-time">{{item.ctime}}</view>
+          <view class="sysMessage">{{item.progressText}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--单据公开-->
+  <view class="model">
+    <view class="model-title flex">
+      <text class="modeltitle-text">
+        单据公开
+      </text>
+      <text class="blue-text2">{{project.bill.billCount}}份单据</text>
+    </view>
+  </view>
+  <!--留言与记录-->
+  <view class="message">
+    <!--tab-->
+    <view class="body">
+      <view class="nav bc_white">
+        <view class="{{selected?'choose':'default'}}" bindtap="selected">
+          支持记录
+          <view class="record-number">{{dataa.doCount}}</view>
+        </view>
+        <view class="{{selected1?'choose':'default'}}" bindtap="selected1">
+          爱心留言
+          <view class="record-number">{{ly.coCount}}</view>
+        </view>
+      </view>
+      <view class="{{selected?'show':'hidden'}}">
+        <view wx:for="{{dataa.list}}" class="record" wx:key="item">
+          <image src="{{item.user.headimgurl}}" class="record-img"></image>
+          <view class="record-username">{{item.user.nickname}}</view>
+          <view class="word9" wx:if="{{item.reply.content}}">
+            <view><text style="color:#00aac5">管理员：</text>{{item.reply.content}}</view>
+          </view>
+          <view class="record-time">{{item.ctime}}</view> 
+          <view class="record-money">
+            <text>￥{{item.money}}</text>
+          </view>
+        </view>
+        <view wx:if="{{dataa.doCount === 0}}"></view>
+        <view wx:else>
+          <view class="detail-more">
+            <navigator url="/pages/axjl/axjl?id={{id}}">
+              查看更多
+            </navigator>
+          </view>
+        </view>
+      </view>
+      <view class="{{selected1?'show':'hidden'}}">
+        <view class="message9" wx:if="{{ly.coCount > 0}}" wx:for="{{ly.list}}" wx:key="item">
+          <image src="{{item.user.headimgurl}}" class="img9"></image>
+          <view class="name9">
+            <text>{{item.user.nickname}}</text>
+          </view>
+          <view class="word9">
+            <text wx:if="{{item.comment}}" style="">{{item.comment}}</text>
+            <view wx:if="{{item.reply.content}}"><text style="color:#00aac5">管理员：</text>{{item.reply.content}}</view>
+          </view>
+          
+          <view class="time9">
+            <text>{{item.ctime}}</text>
+          </view>
+        </view>
+        <view class="detail-more">
+        <navigator url="/pages/axly/axly?id={{id}}" class="message-more {{ly.coCount === 0?'hidden':'show'}}">
+          查看更多
+        </navigator>
+        </view>
+        <view class="message-btn {{ly.coCount === 0?'show':'hidden'}}" bindtap="message">
+          <text>马上去留言</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--底栏-->
+  <view class="footbar flex">
+    <view class="footbar-col">
+      <image src="http://ui.zc.gongyicishan.net/wx-ui/images/bt-celloct.png" mode="scaleToFill" class="footbar-collect" bindtap="active" wx:if="{{myPraise === 'true'}}"></image>
+      <image src="http://ui.zc.gongyicishan.net/wx-ui/images/bt-celloct-on.png" mode="scaleToFill" class="footbar-collect" bindtap="active" wx:else></image>
+      
+      <view class="collect-text">
+        <text>收藏</text>
+      </view>
+    </view>
+    <view class="footbar-col">
+      <image src="http://ui.zc.gongyicishan.net/wx-ui/images/bt-share.png" class="footbar-collect" bindtap="share"></image>
+      <view class="collect-text">
+        <text>分享</text>
+      </view>
+    </view>
+    <!--<navigator url="/pages/project/helphim/helphim?id={{id}}">-->
+      <view class="helphim" bindtap="helpHim">
+        <text>帮助TA</text>
+      </view>
+    <!--</navigator>-->
+  </view>
+</view>
+<view class="share" hidden="{{hidden===true}}">
+ <image src="http://ui.zc.gongyicishan.net/wx-ui/images/share-tips.png?ts=v1" class="share-img"></image>
+   <view class="iknow" bindtap="clearShare">
+     <text>我知道啦</text>
+   </view>
+</view>

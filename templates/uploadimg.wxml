@@ -1,0 +1,14 @@
+<template name="unloadimg">
+  <view class="flexbox">
+    <view style="flex-direction:row;position: relative;" wx:for="{{img}}" wx:key="item">
+      <image class="add-img" data-index="{{index}}" src="{{item}}" bindtap="showImg"></image>
+      <image bindtap="popImg" data-idx="{{index}}" class="img-box-item-x" src="../../images/sp-clear.png"></image>
+    </view>
+    <view class="add-img" bindtap="chooseImg">
+      <image src="../images/add.png" class="add"></image>
+      <view class="classname">
+        <text class="addtext">上传相关图片</text>
+      </view>
+    </view>
+  </view>
+</template>

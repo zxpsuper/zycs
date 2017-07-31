@@ -1,0 +1,55 @@
+
+{
+  "pages": [
+    "pages/index/index",
+    "pages/discover/discover",
+    "pages/jianzheng/jianzheng",
+    "pages/jubao/jubao",
+    "pages/me/me",
+    "pages/project/helphim/helphim",
+    "pages/pay/paying/paying",
+    "pages/axjl/axjl",
+    "pages/axly/axly",
+    "pages/project/happysixone/happy",
+    "pages/me/axjl/axjl",
+    "pages/me/faqi/faqi",
+    "pages/me/details/details",
+    "pages/me/axxq/axxq",
+    "pages/me/advice/advice",
+    "pages/logs/logs",
+    "pages/gongyi/gongyi",
+    "pages/changqi/changqi"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "众益慈善",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#2c2c2c",
+    "selectedColor": "#1296db",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/ft-home-on.png",
+        "iconPath": "images/ft-home.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/ft-discovery-on.png",
+        "iconPath": "images/ft-discovery.png",
+        "pagePath": "pages/discover/discover",
+        "text": "发现"
+      },
+      {
+        "selectedIconPath": "images/ft-me-on.png",
+        "iconPath": "images/ft-me.png",
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
+  }
+}

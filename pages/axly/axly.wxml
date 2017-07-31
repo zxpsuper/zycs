@@ -1,0 +1,42 @@
+<!--标题-->
+<view class="project flex">
+  <image src="{{project.imgPath}}" class="project-image"></image>
+  <view class="classname">
+    <view class="project-name">
+      <text>{{project.name}}</text>
+    </view>
+    <view class="love-message">
+      <text>爱心留言：{{project.comment.coCount}}条</text>
+    </view>
+  </view>
+</view>
+<!--送祝福-->
+<view class="hope">
+  <view class="title">
+    <text>送祝福</text>
+  </view>
+  <form>
+    <view class="form">
+      <textarea placeholder="戳这戳这戳这，为暂时处于困难期的TA送去几句鼓励的话，让TA感受到您的关心，给TA跨过各种坎的动力和决心吧~" class="textarea" bindinput="text" placeholder-style="font-size:32rpx"/>
+      <view class="tip"><text>{{tip}}</text></view>
+      <view class="textbottom"></view>
+      <view class="btndiv">
+        <button form-type="submit" class="button" bindtap="zfBtn" name="">留言祝福</button>
+      </view>
+    </view>
+  </form>
+</view>
+<!--留言板-->
+<view class="message" wx:for="{{dataa}}" wx:key="item">
+  <image src="{{item.user.headimgurl}}" class="img"></image>
+  <view class="name">
+    <text>{{item.user.nickname}}</text>
+  </view>
+  <view class="word">
+    <text>{{item.comment}}</text>
+    <view wx:if="{{item.reply.content}}"><text style="color:#00aac5">管理员：</text>{{item.reply.content}}</view>
+  </view>
+  <view class="time">
+    <text>{{item.ctime}}</text>
+  </view>
+</view>

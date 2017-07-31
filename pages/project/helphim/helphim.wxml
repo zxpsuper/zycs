@@ -1,0 +1,18 @@
+<!--pages/project/helphim/helphim.wxml-->
+<view class="support-name">
+ <text>{{project.name}}</text>
+</view>
+<form class="payform">
+ <view class="paymoney flex">
+  <view class="classname"><text>{{isreadOnly ? '固定': ''}}支持金额（元）</text></view>
+  <input value="{{jine}}" bindinput="money" disabled="{{isreadOnly}}"  placeholder="请填写金额" type="number" class="input"/>
+ </view>
+ <view class="flex image-group">
+  <image src="http://ui.zc.gongyicishan.net/wx-ui/images/form-tick.png" class="img"></image>
+  <image src="http://ui.zc.gongyicishan.net/wx-ui/images/wx-pay.png" class="img1"></image>
+ </view>
+ <textarea class="textarea" placeholder="亲，需要您的爱心留言，支持TA！" placeholder-style="font-size:30rpx" bindinput="text"/>
+ <view class="foot-btn">
+  <button class="btn" form-type="submit" bindtap="setDonation">支持TA</button>
+ </view>
+</form>

@@ -1,0 +1,62 @@
+/* pages/jubao/jubao.wxss */
+@import "/templates/uploadimg.wxss";
+
+.input {
+  width: 710rpx;
+  padding: 20rpx;
+  border-top: 2rpx solid #eee;
+  font-size: 28rpx;
+  background: #fff;
+}
+
+.input:first-child {
+  margin-top: 40rpx;
+}
+
+.input:nth-child(4) {
+  border-bottom: 2rpx solid #eee;
+}
+
+.input:nth-child(5) {
+  margin-top: 30rpx;
+  border-bottom: 2rpx solid #eee;
+  border-top: 2rpx solid #eee;
+  height: 86rpx;
+  padding: 10rpx;
+}
+
+textarea {
+  width: 355px;
+  height: 280rpx;
+}
+
+page {
+  background: #f9f9f9;
+}
+
+.code {
+  width: 260rpx;
+  margin-left: 16rpx;
+  margin-top: 4rpx;
+}
+
+.input-code {
+  margin-left: 80rpx;
+  width: 220rpx;
+}
+
+.input-code input {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+}
+
+.active {
+  width: 70%;
+  margin: 56rpx auto;
+  background: #00aac5;
+  border-radius: 40rpx;
+  color: #fff;
+  height: 78rpx;
+  line-height: 78rpx;
+}
+

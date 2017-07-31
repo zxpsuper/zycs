@@ -1,0 +1,83 @@
+<!--index.wxml-->
+<image src="{{adImgPath}}" class="ad" bindtap="showad"></image>
+<view class="ad-detail {{adHidden}}">
+  <view class="ad-div">
+    <view>
+      <block>
+        <view class="ad-btn" bindtap="closeAd">×</view>
+        <import src="../../templates/ad.wxml" />
+        <template is="ad" data="{{adDetail}}" />
+      </block>
+    </view>
+    <view class="copy-ad" bindtap="copyAd">
+      <text>复制网址</text>
+    </view>
+  </view>
+</view>
+<view class="btn-group">
+  <view class="btn-image">
+    <navigator url="../gongyi/gongyi">
+      <image src="../images/zc.png" class="img1"></image>
+      <image src="../images/explore-left.png" class="img2"></image>
+      <view class="btn-text">
+        <text>公益众筹</text>
+      </view>
+    </navigator>
+  </view>
+  <view class="btn-image">
+    <navigator url="../changqi/changqi">
+      <image src="../images/gy.png" class="img1"></image>
+      <image src="../images/explore-right.png" class="img3"></image>
+      <view class="btn-text1">
+        <text>长期募捐</text>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view class="body">
+  <!--筹款推荐-->
+  <view class="title">
+    <navigator url="../gongyi/gongyi" class="smnav">
+      <text class="i-r-arrow-title">最新支持</text>
+      <image src="../images/arrow.png" class="arrow"></image>
+    </navigator>
+  </view>
+
+  <view class="item" wx:for="{{list}}" wx:key="item">
+    <navigator url="/pages/project/happysixone/happy?id={{item.project._id}}" class="nav">
+      <view class="item-part1">
+        <image class="userimg" src="{{item.user.headimgurl}}"></image>
+        <view class="text">
+          <view>{{item.user.nickname}}</view>
+          <view class="time">{{item.ctime}}</view>
+        </view>
+        <view class="donatemoney">￥<text style="font-size:36rpx">{{item.money}}</text></view>
+      </view>
+      <view class="item-part2">
+        <image src="{{item.project.imgPath}}" class="itemimg"></image>
+        <view class="detail">
+          <view class="itemtitle">{{item.project.name}}</view>
+          <view class="progress" wx:if="{{item.project.type==='1'}}">
+            <view class="progress-sm" style="width:{{item.super}}%"></view>
+          </view>
+          <view style="height:30rpx;" wx:else></view>
+          <view class="detailmore">
+            <view class="detailtext flex1" wx:if="{{item.project.type==='2'}}">长期筹款</view>
+            <view class="detail1 flex1" wx:else>
+              <view style="color:#00aac5">{{item.project.tmoney}}元</view>
+              <view class="classname">目标金额</view>
+            </view>
+            <view class="detail2 flex1">
+              <view style="color:#00aac5">{{item.project.dmoney}}元</view>
+              <view class="classname">已筹金额</view>
+            </view>
+            <view class="detail3 flex1">
+              <view class="donateday" wx:if="{{item.project.type==='2'}}">进行中</view>
+              <view class="donateday" wx:else>已筹<text style="color:#00aac5">{{item.project.stime}}</text>天</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

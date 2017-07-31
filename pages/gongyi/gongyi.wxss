@@ -1,0 +1,105 @@
+/**gongyi.wxss**/
+@import "../discover/discover.wxss";
+
+.topbar {
+  width: 710rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding: 0 20rpx;
+  color: #666;
+  font-size: 28rpx;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  
+}
+
+.li {
+  vertical-align: middle;
+  width: 30%;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+}
+
+.on {
+  color: #be1414;
+  background-color: transparent;
+  border-bottom: 4rpx solid  #be1414;
+}
+.imagea{
+  width: 750rpx;
+}
+.imgs{
+width:600rpx;
+margin:40rpx 75rpx;
+
+}
+
+.btn{
+width:600rpx;
+height:80rpx;
+background-color:#00aac5 !important;
+border-color:#00aac5 !important;
+border-radius:20px !important;
+line-height:80rpx;
+text-align:center;
+margin:40rpx auto;
+color:#fff;
+}
+
+.body{
+  padding-top: 20rpx;
+  background: #f9f9f9;
+}
+
+.collection{
+  width: 360rpx;
+  height: 420rpx;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 14rpx;
+  margin-left: 10rpx;
+}
+
+.recommendimg{
+  width: 100%;
+  height: 240rpx;
+  padding:0 0 8rpx 0;
+
+}
+
+.coltext{
+  font-size: 30rpx;
+  padding-top: 20rpx;
+  color: #000000;
+  padding-left: 8rpx;
+}
+
+.detail2{
+   font-size:27rpx;
+  line-height:42rpx;
+  margin-top:30rpx;
+}
+
+.detail1{
+  flex: 1;
+  text-align: center;
+}
+
+.number{
+  color:#00aac5;
+}
+.italic{
+  font-style: italic;
+  color: #afe4ed;
+}
+.txt{
+  color: #bcbbbb;
+}
+
+.border{
+  border-left: 0.5rpx solid #a1eef5;
+}

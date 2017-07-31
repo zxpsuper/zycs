@@ -1,0 +1,39 @@
+<!--pages/jubao/jubao.wxml-->
+<form>
+  <view class="input">
+    <input placeholder="请填写您的姓名" bindinput="realName" />
+    <view class="tip">
+      <text>{{tipname}}</text>
+    </view>
+  </view>
+  <view class="input">
+    <input placeholder="请填写您的联系方式：QQ、微信、手机" bindinput="contactInfo" />
+    <view class="tip">
+      <text>{{tipinfo}}</text>
+    </view>
+  </view>
+  <view class="input">
+    <input placeholder="请填写您的身份证号码" bindinput="idCardNo" type="idcard"/>
+    <view class="tip">
+      <text>{{tipid}}</text> 
+    </view>
+  </view>
+  <view class="input">
+    <textarea placeholder="填写您举报该项目的理由" bindinput="reportText" />
+    <view class="tip">
+      <text>{{tiptext}}</text>
+    </view>
+  </view>
+  <import src="../../templates/uploadimg.wxml" />
+  <template is="unloadimg" data="{{img}}" />
+  <view class="codediv flex">
+    <view class="code" bindtap="reflesh">
+      <canvas canvas-id="my-canvas" style="width: 260rpx; height: 86rpx;" />
+    </view>
+    <view class="input-code">
+      <input name="captchaTxt" type="text" placeholder="请输入验证码" bindinput="captchaTxt" />
+    </view>
+  </view>
+
+  <button class="active" style="color:{{color}}" bindtap="report">确认举报</button>
+</form>

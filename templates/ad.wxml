@@ -1,0 +1,20 @@
+<!--ad 模板-->
+<template name="ad">
+    <block wx:for="{{adDetail}}"  wx:for-index="idy"  wx:for-item="cellData" wx:key="item">
+        <block  wx:if="{{cellData.type == 'view'}}" class='adblock'>
+            <view class="p">
+                <block  wx:for="{{cellData.child}}" wx:key="text">
+                    <block  wx:if="{{item.type == 'a'}}">
+                        <text class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}">{{item.text}}</text>
+                    </block>
+                    <block  wx:else>
+                        <text>{{item.text}}</text>
+                    </block>
+                </block>
+            </view>
+        </block>
+        <block wx:if="{{cellData.type == 'img'}}">
+            <image class="img" data-index="{{idy}}" style="{{cellData.attr.height?cellData.attr.height:100}}px"  mode="aspectFit" src="{{cellData.attr.src}}" bindload="imageLoad"></image>
+        </block>
+    </block>
+</template>

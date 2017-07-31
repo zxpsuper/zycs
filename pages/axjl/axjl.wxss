@@ -1,0 +1,110 @@
+.project {
+  padding: 30rpx 20rpx;
+  width: 710rpx;
+  height: 250rpx;
+}
+
+.project-image {
+  width: 310rpx;
+  height: 240rpx;
+  border-radius: 16rpx;
+  background-color: #aaa;
+  margin-right: 20rpx;
+}
+
+.project-name {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.hope {
+  background: #fff;
+}
+
+.love-message {
+  font-size: 28rpx;
+  color: #796f6f;
+}
+
+.record {
+  width: 710rpx;
+  color: #aaa;
+  padding:40rpx 30rpx 0 30rpx;
+  border-top: 1rpx solid gainsboro;
+  margin-bottom: -42rpx;
+}
+
+.record-img {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+}
+
+.record view {
+  margin-top: 20rpx;
+}
+
+.record-money {
+  font-weight: bold;
+  color: #00aac5;
+  position: relative;
+  top: -68rpx;
+  text-align: right;
+  padding-right: 20rpx;
+}
+
+.record-number {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  font-size: 0.625rem;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.record-username {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.record-time {
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  color: #aaa;
+}
+
+.love-money {
+  font-weight: bold;
+  color: #00aac5;
+  font-size: 28rpx;
+}
+
+.support {
+  width: 140rpx;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  text-align: center;
+  color: #796f6f;
+  position: absolute;
+  right: 22rpx;
+  font-size: 28rpx;
+  
+}
+
+.support view {
+  color: #aaa;
+}
+
+.more {
+  margin-top: 20rpx;
+}
+
+.word9 {
+  padding: 12rpx;
+  color: #aaa;
+  background-color: #f9f9f9;
+  font-size: 28rpx;
+  margin: 16rpx 0;
+}

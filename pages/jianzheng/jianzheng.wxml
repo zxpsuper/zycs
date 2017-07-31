@@ -1,0 +1,28 @@
+<!--pages/jianzheng/jianzheng.wxml-->
+<view class="body">
+  <view class="thank">
+    <text>感谢您的热心肠，如果您参与、探访、深入了解过此公益项目，希望您如实填写以下信息，这将为受助人赢取更多信任。</text>
+  </view>
+  <view class="project flex">
+    <view>
+      <image src="{{src}}" class="img"></image>
+    </view>
+    <view class="detail">
+     <view class="name">{{name}}</view>
+     <view class="see-text">见证人：<text class="number">{{num}}</text>位</view>
+    </view>
+  </view>
+  <form>
+    <view class="relative flex">
+      <text>您与受助对象的关系</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </picker>
+      <view class="triangle-up"></view>
+    </view>
+    <view class="title"><text>见证情况</text></view>
+    <textarea placeholder="如：我是xx，我一直在参与这个项目，请大家相信，恳请朋友们"/>
+  </form>
+</view>
