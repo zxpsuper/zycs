@@ -47,20 +47,18 @@ Page({
       {
         src: '../images/xx.png',
         text: '我关注的',
-        url:"/pages/me/details/details?id=praise"
+        url: "/pages/me/details/details?id=praise"
       },
       {
         src: '../images/zhichi.png',
         text: '我支持的',
-        url:"/pages/me/details/details?id=support"
+        url: "/pages/me/details/details?id=support"
       }
     ]
   },
   onLoad: function () {
     let data = this.data
     app.login()
-    // this.getCount(data.state, data.deadlineType, data.stateEnd, data.domainType, data.fuzzy)
-    console.log('jwt = ', wx.getStorageSync('jwt') + '123456', this.data.interval)
   },
   // 轮播图跳转
   goto: function (e) {
@@ -80,71 +78,14 @@ Page({
       }
     })
   },
-  // getCount(state = '', deadlineType = '', stateEnd = '', domainType = '', fuzzy = '') {
-  //   let param = { state, deadlineType, stateEnd, domainType, fuzzy }
-  //   let _this = this
-  //   wx.request({
-  //     url: `${host}/project/count`,
-  //     data: { param },
-  //     method: 'GET', // OPTIONS, GET, HEAD, GET, PUT, DELETE, TRACE, CONNECT
-  //     header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
-  //     success: res => {
-  //       if (!app.authCheck(res, '/pages/index/index')) return
-  //       // success
-  //       console.log('successa', res)
-  //       if (res.data.result_code == 1) {
-  //         _this.setData({ total: parseInt(res.data.result.projectCount), pageSize: parseInt(res.data.result.projectCount) })
-  //         if (_this.data.total > 0) _this.getList()
-  //       } else {
-  //         _this.setData({ datas: [] })
-  //       }
-  //     }
-  //   })
-  // },
-  // getList() {
-  //   let {pageNo, pageSize, fuzzy, state, deadlineType, stateEnd, domainType} = this.data
-  //   let params = {
-  //     'page.no': pageNo,
-  //     'page.size': pageSize,
-  //     fuzzy: fuzzy,
-  //     param: {
-  //       state,
-  //       deadlineType,
-  //       stateEnd,
-  //       domainType
-  //     }
-  //   }
-  //   let _this = this
-  //   wx.request({
-  //     url: `${host}/project/list`,
-  //     data: { params },
-  //     method: 'GET', // OPTIONS, GET, HEAD, GET, PUT, DELETE, TRACE, CONNECT
-  //     header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
-  //     success: 　(res) => {
-  //       if (!app.authCheck(res, '/pages/index/index')) return
-  //       let {data} = res
-  //       console.log('resaa = ', res)
-  //       if (data && data.result_code === 1 && data.result.projectList && data.result.projectList.length > 0) {
-  //         console.log('res.data.result.projectList', res.data.result.projectList)
-  //         let caldatas = res.data.result.projectList.filter(d => d.state == '1')
-  //         _this.setData({
-  //           datas: caldatas
-  //         })
-  //       } else {
-  //         _this.setData({ datas: [] })
-  //         console.log('123456')
-  //       }
-  //     }
-  //   })
-  // },
   //众筹推荐
   zctj() {
     let that = this
     wx.request({
       url: zctjUrl,
       data: {
-        'page': 1,
-        'pageSize': 4,
+        page: 1,
+        pageSize: 4,
         state: '1',
         recommenderType: '1'
       },
@@ -174,8 +115,8 @@ Page({
     wx.request({
       url: zxcqUrl,
       data: {
-        'page': 1,
-        'pageSize': 4,
+        page: 1,
+        pageSize: 4,
         state: '1'
       },
       method: 'GET', // OPTIONS, GET, HEAD, GET, PUT, DELETE, TRACE, CONNECT
@@ -233,15 +174,15 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function () {
-    this.zctj()
-    this.zxcq()
-    this.img()
-    console.log('jwt = ', wx.getStorageSync('jwt'))
     wx.showToast({
       title: 'loading...',
       icon: 'loading',
       mask: true
     })
+    this.zctj()
+    this.zxcq()
+    this.img()
+    console.log('jwt = ', wx.getStorageSync('jwt'))
     wx.stopPullDownRefresh()
   },
   onShow: function () {

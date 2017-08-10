@@ -43,6 +43,7 @@
                   <view class="">捐款编号:</view>
                   <view class="">{{item.orderNo}}</view>
                 </view>
+                
                 <view class="classname" wx:else></view>
               </view>
             </navigator>

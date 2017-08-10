@@ -9,7 +9,6 @@ text-align:left;
 }
 .support-name{
   width: 710rpx;
-  height: 108rpx;
   line-height: 60rpx;
   padding: 30rpx 30rpx;
   text-align: center;

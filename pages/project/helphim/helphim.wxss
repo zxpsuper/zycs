@@ -2,7 +2,6 @@
 
 .support-name {
   width: 710rpx;
-  height: 52rpx;
   line-height: 50rpx;
   padding: 30rpx 20rpx;
   text-align: center;
@@ -29,12 +28,12 @@
 }
 
 .input {
-  position:absolute;
-  right:30rpx;
-  text-align:right;
-  top:166rpx;
-  width:300rpx;
-
+  position: relative;
+  right: 30rpx;
+  text-align: right;
+  top: 16rpx;
+  width: 300rpx;
+  left: 140rpx;
 }
 
 .img {
@@ -94,4 +93,3 @@
   margin-top: 42rpx;
   padding: 12rpx 32rpx;
 }
-

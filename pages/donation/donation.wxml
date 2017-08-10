@@ -1,0 +1,32 @@
+<!--pages/donation/donation.wxml-->
+<view class="div">
+  <view class="ul"> 
+    <view class="li flex"> 
+      <view class="title">捐款编号：</view>
+      <view class="content">45464564213212316441231sdfadfasdfasdfafadfafd311</view>
+    </view>
+    <view class="li flex"> 
+      <view class="title">项目名称：</view>
+      <view class="content">大爱无疆</view>
+    </view>
+    <view class="li flex"> 
+      <view class="title">捐款金额：</view>
+      <view class="content">￥425</view>
+    </view>
+    <view class="li flex"> 
+      <view class="title">捐款时间：</view>
+      <view class="content">2017-07-29 13：11:20</view>
+    </view>
+    <view class="li flex"> 
+      <view class="title">支付状态：</view>
+      <view class="content">支付成功</view>
+    </view>
+    <view class="li flex"> 
+      <view class="title">支付方式：</view>
+      <view class="content">微信支付</view>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="btn">获取证书</view>
+  </view>
+</view>

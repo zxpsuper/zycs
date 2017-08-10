@@ -6,7 +6,7 @@ const eid = require('./config').eid
 const loginUrl = require('./config').loginUrl
 App({
   onLaunch: function () {
-    this.getJwt()
+    // this.getJwt()
     this.login()
     this.getOrgParam()
     //调用API从本地缓存中获取数据
@@ -14,8 +14,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
-  // ad:function(){
-  // },
   globalData: {
     userInfo: null,
     orgParam: '',

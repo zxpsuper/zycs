@@ -1,3 +1,4 @@
+//配置页面配置路径
 const host = 'https://i.zc.gongyicishan.net/api/wx'
 const javahost = 'https://i.zc.gongyicishan.net/japi'
 const loginUrl = `https://i.zc.gongyicishan.net/api/smallapp/auth/getToken`
@@ -9,7 +10,6 @@ const host2 = 'https://i.zc.gongyicishan.net/api'
 //测试支付
 const cspay = `http://192.168.0.187:8080/japi/wxdonation/paytest`
 const eid = 'zy'
-
 //header
 const headerXw = { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }
 const headerJson = { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }
@@ -115,5 +115,5 @@ const config = {
   advice,
   host2
 }
-
+//输出config
 module.exports = config

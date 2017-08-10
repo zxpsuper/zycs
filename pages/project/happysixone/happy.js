@@ -19,12 +19,6 @@ Page({
     imgs: [],
     content: '',
     zx: { content: '' },
-    org_param_ZXJG: {
-      content: '',
-    },
-    org_param_YJXX: {
-      content: ''
-    },
     gzh: '',
     progress: '',
     dataa: [{}],
@@ -43,11 +37,13 @@ Page({
     readhidden:'',
     at:'小程序'
   },
+  // 关闭广告
   closeAd:function(){
     this.setData({
       adHidden: 'hidden'
     })
   },
+  // 复制网址
   copyAd:function(){
     this.setData({
       adHidden: 'hidden'
@@ -71,6 +67,7 @@ Page({
         // complete
       }
     })
+    // 设置剪贴板内部并复制
     wx.setClipboardData({
       data: `${this.data.adUrl}`,
       success: function (res) {
@@ -86,6 +83,7 @@ Page({
       content: '网址已成功复制于剪贴板，请于浏览器中打开',
     })
   },
+  // 显示广告
   showad:function(){
     this.setData({
       adHidden:''
@@ -111,12 +109,14 @@ Page({
       }
     })
   },
+  // 查看详情
   readmore:function(){
     this.setData({
       readhidden: 'hidden',
       height1:'auto'
     })
   },
+  // 关闭分享
   clearShare:function(){
     this.setData({
       hidden: true,
@@ -194,11 +194,11 @@ Page({
       }
     })
   },
-  stockClick: function (e) {
-    var secCode = e.currentTarget.dataset.seccode;
-    var secName = e.currentTarget.dataset.secname;
-    console.log("stockClick:" + secCode + ";secName:" + secName);
-  },
+  // stockClick: function (e) {
+  //   var secCode = e.currentTarget.dataset.seccode;
+  //   var secName = e.currentTarget.dataset.secname;
+  //   console.log("stockClick:" + secCode + ";secName:" + secName);
+  // },
   // imageLoad: function (e) {
   //   var width = e.detail.width;
   //   var height = e.detail.height;
@@ -212,10 +212,8 @@ Page({
   // },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
- 
     this.setData({
-      id: options.id,
-
+      id: options.id
     })
     console.log('id = ', options.id)
 
@@ -223,16 +221,35 @@ Page({
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
     console.log('111')
-
   },
   onShow: function () {
     // 生命周期函数--监听页面显示
     this.projectDetails()
     this.myPraises()
-    // this.setData({
-    //   'org_param_ZXJG.content': R_htmlToWxml.html2json(app.globalData.orgParam.org_param_ZXJG.replace(/&nbsp;/g, ' ').replace(/<br>/g, '\n')),
-    //   'org_param_YJXX.content': R_htmlToWxml.html2json(app.globalData.orgParam.org_param_YJXX.replace(/&nbsp;/g, ' ').replace(/<br>/g, '\n'))
-    // })
+    this.advertising()
+  },
+  onHide: function () {
+    // 生命周期函数--监听页面隐藏
+  },
+  onUnload: function () {
+    // 生命周期函数--监听页面卸载
+  },
+  onPullDownRefresh: function () {
+    // 页面相关事件处理函数--监听用户下拉动作
+    wx.stopPullDownRefresh()
+  },
+  onReachBottom: function () {
+    // 页面上拉触底事件的处理函数
+  },
+  onShareAppMessage: function () {
+    // 用户点击右上角分享
+    return {
+      title: '众益慈善', // 分享标题
+      desc: '众益慈善', // 分享描述
+      path: 'pages/index/index' // 分享路径
+    }
+  },
+  advertising(){
     wx.request({
       url: `${host2}/smallapp/advertising`,
       data: {},
@@ -240,14 +257,14 @@ Page({
       header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
       success: res => {
         console.log('ad = ', res)
-        if(res.data.result_code==1){
+        if (res.data.result_code == 1) {
           this.setData({
             adImgPath: res.data.result.imgPath,
             adDetail: R_htmlToWxml.html2json(res.data.result.detail.replace(/&nbsp;/g, ' ').replace(/^<noscript>.*<noscript>$/, ' ').replace(/<br>/g, '\n')),
             adId: res.data.result._id,
             adUrl: res.data.result.url
           })
-          console.log('adres',res.data)
+          console.log('adres', this.adDetail)
         }
       },
       fail: function (res) {
@@ -257,31 +274,6 @@ Page({
         // complete
       }
     })
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-    console.log('333')
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-    console.log('444')
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-    wx.stopPullDownRefresh()
-
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-    return {
-      title: '众益慈善', // 分享标题
-      desc: '众益慈善', // 分享描述
-      path: 'pages/index/index' // 分享路径
-    }
   },
   projectDetails() {
     let _this = this
@@ -311,8 +303,6 @@ Page({
           _this.setData({
             project: res.data.result,
             content: R_htmlToWxml.html2json(res.data.result.content.replace(/&nbsp;/g, ' ').replace(/^<noscript>.*<noscript>$/, ' ').replace(/<br>/g, '\n')),
-            // 'zx.content': R_htmlToWxml.html2json(res.data.result.service.replace(/&nbsp;/g, ' ').replace(/^<noscript>.*<noscript>$/, ' ').replace(/<br>/g, '\n')),
-            //   progress:(res.data.result.dmoney*100/res.data.result.tmoney)
             progress: (((res.data.result.dmoney * 100 / res.data.result.tmoney).toFixed(0))),
             jz: res.data.result.progress.list[0],
             djs: res.data.result.bill.list[0]
@@ -331,7 +321,7 @@ Page({
             })
           }
           _this.zcjl()
-          _this.loadGZH()
+          // _this.loadGZH()
          
           console.log('aa=', res.data.result)
           let prog = res.data.result.progress
@@ -391,86 +381,6 @@ Page({
       mask: true
     })
     wx.stopPullDownRefresh()
-  },
-  loadGZH() {
-    let _this = this
-    wx.request({
-      url: gzhUrl,
-      data: { eid },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
-      success: ({ data }) => {
-        if (data.result_code == 1) {
-          _this.setData({ gzh: data.result })
-        } else {
-
-        }
-      },
-      fail: function (res) {
-        // fail
-      }
-    })
-  },
-  imageTap: function (e) {
-    var current = e.target.dataset.src
-    console.log('aaa', e)
-    console.log('imgs', this.data.project.img)
-    wx.previewImage({
-      current: current, // 当前显示图片的链接，不填则默认为 urls 的第一张
-      urls: this.data.project.img,
-      success: function (res) {
-        // success
-        console.log('1', res)
-      },
-      fail: function (res) {
-        // fail
-        console.log('2', res)
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  imageTapDj: function (e) {
-    var current = e.target.dataset.src
-    console.log('aaa', e)
-    console.log('imgs', this.data.project.bill.list[0].img)
-    wx.previewImage({
-      current: current, // 当前显示图片的链接，不填则默认为 urls 的第一张
-      urls: this.data.project.bill.list[0].img,
-      success: function (res) {
-        // success
-        console.log('1', res)
-      },
-      fail: function (res) {
-        // fail
-        console.log('2', res)
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  vip: function () {
-    console.log('texta = ', this.data.jztext)
-    wx.showModal({
-      title: "提示",
-      content: "此功能暂未开启，请关注微信公众号来见证",
-      showCancel: false,
-      confirmText: "确定",
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        }
-      }
-    })
-  },
-  img: function (e) {
-    console.log('e = ', e.currentTarget.id)
-    console.log('text = ', this.data.project.vipcheck.list[e.currentTarget.id].vipcheckText)
-    this.setData({
-      jztext: this.data.project.vipcheck.list[e.currentTarget.id].vipcheckText
-    })
   },
   telz: function () {
     wx.makePhoneCall({
@@ -536,32 +446,4 @@ Page({
       }
     })
   },
-  zcjls: function () {
-    wx.navigateTo({
-      url: `/pages/axjl/axjl?id=${this.data.id}`,
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  xmjzr: function () {
-    wx.navigateTo({
-      url: `/pages/progress/progress?id=${this.data.id}`,
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  }
 })
