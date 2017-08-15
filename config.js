@@ -108,7 +108,6 @@ const config = {
   zjl,
   list,
   bill,
-  // upImage,
   myPraise,
   focus,
   cspay,

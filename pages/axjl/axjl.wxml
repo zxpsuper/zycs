@@ -32,16 +32,3 @@
     <text>￥{{item.money}}</text>
   </view>
 </view>
-<!--记录-->
-<!--<view class="message" wx:for="{{dataa}}">
-  <image src="{{item.user.headimgurl}}" class="img"></image>
-  <view class="name">
-    <text>{{item.user.nickname}}</text>
-  </view>
-  <view class="word">
-    <text>{{item.comment}}</text>
-  </view>
-  <view class="time">
-    <text>{{item.ctime}}</text>
-  </view>
-</view>-->

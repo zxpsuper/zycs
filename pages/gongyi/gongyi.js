@@ -8,6 +8,7 @@ Page({
     navbar: ['进行中', '已结束'],  
     currentTab: 0 ,
   },
+  // 查看更多项目
   discover: function () {
     wx.switchTab({
       url: '../discover/discover',
@@ -22,7 +23,7 @@ Page({
   },
   onShow:function(){
     // 生命周期函数--监听页面显示
-    this.zctj ()
+    this.getproject ()
   },
   onHide:function(){
     // 生命周期函数--监听页面隐藏
@@ -48,7 +49,8 @@ Page({
       path: 'pages/index/index' // 分享路径
     }
   },
-  zctj () {
+  // 获取项目信息
+  getproject () {
     let param = {
       state:'1',
       type:'1'
@@ -96,9 +98,9 @@ Page({
       }
     })
   },
+  // 下拉刷新
   onPullDownRefresh: function(){
-    this.zctj ()
-    this.jss()
+    this.getproject ()
     wx.showToast({
       title: 'loading...',
       icon: 'loading',
@@ -106,21 +108,21 @@ Page({
     })
     wx.stopPullDownRefresh()
   },
+  // 导航切换
   navbarTap: function(e){  
     console.log('eee = ',e.currentTarget.dataset.idx)
     let index = e.currentTarget.dataset.idx
     if(index == 0){
-      console.log(1111111111)
-      this.zctj ()
+      this.getproject ()
     }else{
-      console.log(222222222)
-      this.js()
+      this.endproject()
     }
     this.setData({  
       currentTab: e.currentTarget.dataset.idx  
     })  
   },
-  js () {
+  // 已经结束项目
+  endproject () {
     let param = {
       state:'1',
       type:'1',

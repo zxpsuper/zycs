@@ -14,7 +14,7 @@
             </view>
         </block>
         <block wx:if="{{cellData.type == 'img'}}">
-            <image data-index="{{idy}}" style="width:100%"  mode="widthFix" src="{{cellData.attr.src}}" bindload="imageLoad"></image>
+            <image data-index="{{idy}}" style="width:100%"  mode="widthFix" src="{{cellData.attr.src}}"></image>
         </block>
     </block>
 </template>

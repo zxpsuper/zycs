@@ -147,12 +147,14 @@
       </view>
       <view class="classname" wx:if="{{project.vipcheck.list.length===0}}"></view>
       <view class="classname" wx:else>
-        <view class="vipcheck-text" hidden="{{currentTab!==0}}">{{project.vipcheck.list[0].vipcheckText}}</view>
+        <view wx:for="{{project.vipcheck.list}}">
+        <view class="vipcheck-text" data-gaga="{{index}}" hidden="{{currentTab!==index}}">{{item.vipcheckText}}</view></view>
+        <!-- <view class="vipcheck-text" hidden="{{currentTab!==0}}">{{project.vipcheck.list[0].vipcheckText}}</view>
         <view class="vipcheck-text" hidden="{{currentTab!==1}}">{{project.vipcheck.list[1].vipcheckText}}</view>
         <view class="vipcheck-text" hidden="{{currentTab!==2}}">{{project.vipcheck.list[2].vipcheckText}}</view>
         <view class="vipcheck-text" hidden="{{currentTab!==3}}">{{project.vipcheck.list[3].vipcheckText}}</view>
         <view class="vipcheck-text" hidden="{{currentTab!==4}}">{{project.vipcheck.list[4].vipcheckText}}</view>
-        <view class="vipcheck-text" hidden="{{currentTab!==5}}">{{project.vipcheck.list[5].vipcheckText}}</view>
+        <view class="vipcheck-text" hidden="{{currentTab!==5}}">{{project.vipcheck.list[5].vipcheckText}}</view> -->
       </view>
     </view>
   </view>
@@ -255,7 +257,6 @@
     <view class="footbar-col">
       <image src="http://ui.zc.gongyicishan.net/wx-ui/images/bt-celloct.png" mode="scaleToFill" class="footbar-collect" bindtap="active" wx:if="{{myPraise === 'true'}}"></image>
       <image src="http://ui.zc.gongyicishan.net/wx-ui/images/bt-celloct-on.png" mode="scaleToFill" class="footbar-collect" bindtap="active" wx:else></image>
-      
       <view class="collect-text">
         <text>收藏</text>
       </view>

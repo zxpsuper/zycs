@@ -45,6 +45,7 @@ Page({
       url: '../discover/discover',
     })
   },
+  //最新长期募捐项目信息
   zxcq(){
     let paramsa = {
       state:'1',

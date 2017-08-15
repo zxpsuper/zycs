@@ -1,12 +1,5 @@
 //pay.js
-const host = require('../../../config').host
 const info = require('../../../config').info
-const pay = require('../../../config').pay
-const payapi = require('../../../config').payapi
-const setDonationUrl = require('../../../config').setDonationUrl
-const donationDetailsUrl = require('../../../config').donationDetailsUrl
-const prepayAndSign = require('../../../config').prepayAndSign
-const csPay = require('../../../config').cspay
 let app = getApp()
 var open
 var skey
@@ -24,7 +17,6 @@ Page({
   },
   money: function (e) {
     this.setData({ jine: Number(e.detail.value) })
-    // jine = e.detail.value
   },
   setDonation: function () {
     this.projectInfo()
@@ -88,8 +80,9 @@ Page({
   },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
-    this.setData({ id: options.id })
-    console.log('id = ', this.data.id)
+    this.setData({
+       id: options.id 
+    })
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -125,7 +118,6 @@ Page({
   },
   projectInfo() {
     let _this = this
-    console.log('###info', `${info}${this.data.id}`)
     wx.request({
       url: `${info}${this.data.id}`,
       data: {},

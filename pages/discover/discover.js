@@ -1,9 +1,6 @@
 //discover.js
 //获取应用实例
 let app = getApp()
-const topUrl = require('../../config').top3
-// const header = require('../../config').headerJson
-const zxzcUrl = require('../../config').zxzc
 const host2 = require('../../config').host2
 const host = require('../../config').host
 var R_htmlToWxml = require('../../utils/htmlToWxml.js')
@@ -100,16 +97,8 @@ Page({
       }
     })
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-    this.getCount()
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
+  // 获取广告详情
+  getAD(){
     wx.request({
       url: `${host2}/smallapp/advertising`,
       data: {},
@@ -134,14 +123,20 @@ Page({
         // complete
       }
     })
-    
+  },
+  onLoad: function (options) {
+    // 生命周期函数--监听页面加载
+    this.getCount()
+    this.getAD()
+  },
+  onReady: function () {
+    // 生命周期函数--监听页面初次渲染完成
+  },
+  onShow: function () {
+    // 生命周期函数--监听页面显示
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏
-    // this.setData({
-    //   page:1,
-    //   list:[]
-    // })
   },
   onUnload: function () {
     // 生命周期函数--监听页面卸载
@@ -149,8 +144,6 @@ Page({
   },
   onPullDownRefresh: function () {
     // 页面相关事件处理函数--监听用户下拉动作
-    console.log('下拉刷新')
-
   },
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
@@ -164,6 +157,7 @@ Page({
       path: 'pages/index/index' // 分享路径
     }
   },
+  // 获取数量
   getCount() {
     wx.request({
       url: `${host}/donation/count`,
@@ -189,16 +183,13 @@ Page({
       }
     })
   },
+  // 加载更多
   load() {
-    // if (this.data.hasLoadedPage[this.data.page]) return
     if (this.data.page > this.data.totalPage) return
-    // this.data.listLoadShow = true
-    // if (this.data.page !== 1) { }
       wx.showLoading({
         title: '正在加载中',
         mask: true
       })
-    
     let page = this.data.page
     let pageSize = this.data.pageSize
     let that = this
@@ -224,16 +215,14 @@ Page({
           })
           let q = that.data.page + 1
           console.log('q', q)
-          let super2 = that.data.list
-          console.log('super2', super2)
-          super2 = super2.concat(super1)
+          // let super2 = that.data.list
+          // console.log('super2', super2)
+          // super2 = super2.concat(super1)
           let sp = [...that.data.list, ...res.data.result.donationList]
           that.setData({
             list: sp,
             page: q
           })
-          console.log('list', that.data.list)
-          console.log('page', that.data.page)
           wx.hideLoading()
         }
       },
@@ -245,61 +234,18 @@ Page({
       }
     })
   },
-  gyzcClick: function () {
-    console.log('公益众筹')
-    wx.navigateTo({
-      url: '../gongyi/gongyi',
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  cqckClick: function () {
-    console.log('长期筹款')
-    wx.navigateTo({
-      url: '../changqi/changqi',
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  moreClick: function () {
-    console.log('查看更多')
-    wx.navigateTo({
-      url: '../changqi/changqi',
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-
   onPullDownRefresh: function () {
-    this.top3()
-    this.zxzc()
     wx.showToast({
       title: 'loading...',
       icon: 'loading',
       mask: true
     })
+    this.setData({
+      list:[],
+      page: 1, 
+      pageSize: 10
+    })
+    this.getCount()
     wx.stopPullDownRefresh()
   }
-
 })

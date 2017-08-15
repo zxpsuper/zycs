@@ -105,6 +105,7 @@ Page({
   },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
+    this.login()
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -113,7 +114,6 @@ Page({
   onShow: function () {
     // 生命周期函数--监听页面显示
     this.request()
-    this.login()
     wx.request({
       url: `${host2}/smallapp/advertising`,
       data: {},
@@ -145,10 +145,6 @@ Page({
   },
   onUnload: function () {
     // 生命周期函数--监听页面卸载
-
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
 
   },
   onReachBottom: function () {
@@ -187,13 +183,12 @@ Page({
     })
   },
   onPullDownRefresh: function () {
-    this.request()
-  
     wx.showToast({
       title: 'loading...',
       icon: 'loading',
       mask: true
     })
+    this.request()
     wx.stopPullDownRefresh()
   },
   login() {

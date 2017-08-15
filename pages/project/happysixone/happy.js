@@ -4,9 +4,7 @@ const eid = require('../../../config').eid
 const host = require('../../../config').host
 const host2 = require('../../../config').host2
 var R_htmlToWxml = require('../../../utils/htmlToWxml.js')
-const imageUrl = require('../../../config').image
 const xmxqUrl = require('../../../config').xmxq
-const zcjlUrl = require('../../../config').zxjl
 const header = require('../../../config').headerJson
 const headerxw = require('../../../config').headerXw
 const gzhUrl = require('../../../config').gzhUrl
@@ -129,6 +127,7 @@ Page({
       height:'1200rpx'
     })
   },
+  // 见证人切换
   navbarTap: function (e) {
     console.log('eee = ', e.currentTarget.dataset.haha)
     let index = e.currentTarget.dataset.haha
@@ -136,12 +135,12 @@ Page({
       currentTab: e.currentTarget.dataset.haha
     })
   },
+  // 后退按钮
   back:function(){
     wx.navigateBack()
   },
+  // 支持他
   helpHim:function(){
-    // var la = this.data.project.name
-    // wx.setStorageSync("titleName", la)
     let _this = this
     wx.navigateTo({
       url: `/pages/project/helphim/helphim?id=${_this.data.id}`,
@@ -149,6 +148,7 @@ Page({
         // success
       },
   })},
+  // 查看爱心留言
   message:function(){
     var ha = this.data.project.imgPath
     var la = this.data.project.name
@@ -170,6 +170,7 @@ Page({
       selected1: true
     })
   },
+  // 点击收藏
   active: function () {
     let params = {
       projectId: this.data.id,
@@ -216,17 +217,15 @@ Page({
       id: options.id
     })
     console.log('id = ', options.id)
-
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-    console.log('111')
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
     this.projectDetails()
     this.myPraises()
     this.advertising()
+  },
+  onReady: function () {
+    // 生命周期函数--监听页面初次渲染完成
+  },
+  onShow: function () {
+    // 生命周期函数--监听页面显示
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏
@@ -249,6 +248,7 @@ Page({
       path: 'pages/index/index' // 分享路径
     }
   },
+  // 广告详情
   advertising(){
     wx.request({
       url: `${host2}/smallapp/advertising`,
@@ -275,6 +275,7 @@ Page({
       }
     })
   },
+  // 项目详情
   projectDetails() {
     let _this = this
     wx.request({
@@ -322,12 +323,10 @@ Page({
           }
           _this.zcjl()
           // _this.loadGZH()
-         
           console.log('aa=', res.data.result)
           let prog = res.data.result.progress
           console.log('单据  = ', _this.data.djs)
         } else {
-
         }
       },
       fail: function (res) {
@@ -359,20 +358,6 @@ Page({
       ly: comment
     })
   },
-  home: function () {
-    wx.switchTab({
-      url: '/pages/index/index',
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
   onPullDownRefresh: function () {
     this.projectDetails()
     wx.showToast({
@@ -382,6 +367,7 @@ Page({
     })
     wx.stopPullDownRefresh()
   },
+  // 致电
   telz: function () {
     wx.makePhoneCall({
       phoneNumber: '020-31123061',
@@ -391,6 +377,7 @@ Page({
       }
     })
   },
+  // 获取是否收藏
   myPraises() {
     let params = {
       projectId: this.data.id
@@ -413,30 +400,6 @@ Page({
             myPraise: 'false'
           })
         }
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
-  active: function () {
-    let params = {
-      projectId: this.data.id,
-      active: this.data.myPraise
-    }
-    let that = this
-    wx.request({
-      url: focusUrl,
-      data: params,
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
-      success: function (res) {
-        // success
-        console.log('active = ', res)
-        that.myPraises()
       },
       fail: function (res) {
         // fail

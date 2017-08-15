@@ -138,7 +138,7 @@ App({
   guid() {
     function S4() {
       // return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);   
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
   },
@@ -190,7 +190,8 @@ App({
     console.log('str', str)
     // 绘制英文
     for (var i = 0; i < 4; i++) {
-      var txt = str[i];
+      var txt = str[i]
+      var txt1 = String(txt)
       var fillStyle = this.randomColor(50, 160) //随机生成字体颜色
       var font = this.randomNum(30, 40) //随机生成字体大小
       var x = 10 + i * 26;
@@ -201,7 +202,7 @@ App({
       //修改坐标原点和旋转角度
       ctx.translate(x, y);
       ctx.rotate(deg * Math.PI / 180);
-      ctx.fillText(txt, 0, 0);
+      ctx.fillText(txt1, 0, 0);
       //恢复坐标原点和旋转角度
       ctx.rotate(-deg * Math.PI / 180);
       ctx.translate(-x, -y);
@@ -227,12 +228,4 @@ App({
     }
     ctx.draw()
   },
-  // 预防万一
-  getJwt() {
-    let jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTk1YTE5YzAzMjViZmEwZWVhYzU4ZTdjIiwib3BlbmlkIjoibzFobUh4QlRIdHlGWUkwX0FRell0QVYzRHRBWSIsImVpZCI6Inp5IiwibmFtZSI6IlNJbU1vbl9GbzRyIiwiaGVhZGltZ3VybCI6Imh0dHA6Ly93eC5xbG9nby5jbi9tbW9wZW4vZWdwZURxRDZtR2hDNGhIRlc5MkI0SkdqaWFPYVZ4eUQ5b3NzcEd6ZklHSzF5emdtdVc2UXQ4N1hxQ0tpYWZVRjF5UWN2ZnZ1aWNFc01Kc1RpYkJKdVFoRFhlWnNCMlJUZERVUS8wIiwiYWRkcmVzcyI6IuS4reWbveW5v-S4nOecgeW5v-W3nuW4giIsImxvZ2luVHlwZSI6IjAiLCJpYXQiOjE1MDA2MTQyNjAsImV4cCI6MTUwMTkxMDI2MH0.aqDoVAJEMIowEyv60AuXf6zvqPRVH6ew4q7uQSufMXM'
-    wx.setStorageSync('jwt', jwt)
-    wx.redirectTo({
-      url: '/pages/index/index'
-    })
-  }
 })

@@ -60,15 +60,15 @@ Page({
       name: 'upload',
       header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
       success: function (res) {
-        console.log(res)
+        console.log('fileres',res)
         // let data =res.data
         let data = JSON.parse(res.data)
+        console.log('fileres', data)
         if (data.result_code == 1) {
-          
           let img = _this.data.img
           let retImgUrl = data.result
           console.log('la', retImgUrl)
-          img.length >= 9 ? img.splice(-1, 1, retImgUrl) : (img = [...img, retImgUrl])
+          img.length >= 9 ? img.splice(-1, 1,retImgUrl) : (img = [...img, retImgUrl])
           _this.setData({ img })
         }
         console.log('s',_this.data.img)
@@ -84,6 +84,7 @@ Page({
       }
     })
   },
+    // 点击删除图片
   popImg(e) {
     console.log('pop', e.currentTarget.dataset.idx)
     let index = e.currentTarget.dataset.idx
@@ -153,7 +154,7 @@ Page({
     let captchaId = app.globalData.captchaId
     let img= this.data.img
     let params = {
-      realName, contactInfo, idCardNo, reportText, projectId, projectName, captchaTxt, captchaId,img
+      realName, contactInfo, idCardNo, reportText, projectId, projectName, captchaTxt, captchaId, img
     }
     console.log('sdf', params)
     if (this.data.captchaTxt2.toUpperCase() === captchaTxt) {
@@ -276,8 +277,7 @@ Page({
    */
   onLoad: function (options) {
     app.genCaptcha()
-    var str = app.globalData.captchaTxt
-    app.drawPic(str)
+    this.drawPic()
     this.setData({
       id: options.id,
       projectName: options.name
@@ -288,21 +288,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
@@ -329,6 +326,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+  },
+  drawPic(){
+    var str = app.globalData.captchaTxt
+    app.drawPic(str)
   }
 })

@@ -64,20 +64,7 @@ Page({
       path: 'pages/index/index' // 分享路径
     }
   },
-  back: function () {
-    wx.navigateBack({
-      delta: 2, // 回退前 delta(默认为1) 页面
-      success: function (res) {
-        // success
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-      }
-    })
-  },
+  // 获取项目信息
   projectInfo() {
     let _this = this
     console.log(`${xmUrl}${_this.data.id}`)
@@ -141,16 +128,13 @@ Page({
               _this.pay(pid, orderNo, money)
               console.log('host = ', host)
             }
-
           } else {
-            wx.showToast({
-              title: '支持金额至少为￥1'
-            })
           }
         }
       }
     })
   },
+  // 获取支付所需参数
   pay: function (pid, orderNo, money) {
     console.log('#1')
     if (this.data.payFlag) return
@@ -249,6 +233,5 @@ Page({
         // complete
       }
     })
-
   }
 })

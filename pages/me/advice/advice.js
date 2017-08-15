@@ -137,6 +137,7 @@ Page({
     let that = this
     that.setData({ textValue: e.detail.value })
   },
+  // 提交建议
   adviceBtn: function () {
     console.log('text = ', this.data.textValue.length)
     if (this.data.textValue.length === 0) {
