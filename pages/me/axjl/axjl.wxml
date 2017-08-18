@@ -25,7 +25,7 @@
             <view class="ul2 flex">
         <block wx:for="{{data}}" wx:key="item">
           <view class="li-main">
-            <navigator url="/pages/project/happysixone/happy?id={{item._id}}">
+            <navigator url="/pages/project/happysixone/happy?id={{item.projectId}}">
               <view class="li2">
                 <image src="{{item.project.imgPath}}" class="img"></image>
                 <view class="item-title">{{item.project.name}}</view>

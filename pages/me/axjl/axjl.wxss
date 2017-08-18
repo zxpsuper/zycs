@@ -141,7 +141,7 @@ margin-bottom:-10rpx;
 }
 
 .item-title {
-  width: 328rpx;
+  width: 330rpx;
   height: 32rpx;
   line-height: 32rpx;
   position: relative;

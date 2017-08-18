@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/donation/donation",
     "pages/discover/discover",
     "pages/jianzheng/jianzheng",
     "pages/jubao/jubao",
