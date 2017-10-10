@@ -1,99 +1,117 @@
- <image src="http://zcsaas-pub.oss-cn-hangzhou.aliyuncs.com/test/undefined/1497924128813kb7b.png" class="ad"></image>
-<view class="navbar">  
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
-</view>  
+  <image src="{{adImgPath}}" class="ad" bindtap="showad"></image>
+  <view class="ad-detail {{adHidden}}">
+    <view class="ad-div">
+      <view>
+        <block>
+        <view class="ad-btn" bindtap="closeAd">×</view>
+          <import src="../../../templates/ad.wxml" />
+          <template is="ad" data="{{adDetail}}" />
+        </block>
+      </view>
+      <view class="copy-ad" bindtap="copyAd">
+        <text>复制网址</text>
+      </view>
+    </view>
+  </view>
+<view class="topbar flex">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="li {{currentTab==index ? 'on' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
 <!--全部-->
-<view hidden="{{currentTab!==0}}">  
-    <view class="html">
-        <view class="body">
-            <view class="list-content">
-                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{data.length}}</text>个。</view>
-            </view>
-            <view class="conter">
-                <block wx:for="{{data}}" wx:key="item">
-                    <view class=" ">
-                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
-                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
-                            <text wx:if="{{item.state == 1}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(253,185,48,0.8);color:#fff">待审核中</text>
-                            <text wx:elif="{{item.state == 2}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(190,20,20,0.8);color:#fff">审核通过</text>  
-                            <text wx:elif="{{item.state == 3}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(104,213,107,0.8);color:#fff">审核不通过</text>
-                            <text wx:else="{{item.state == 4}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(0,0,0,0.8);color:#fff">未审批</text>
-                        </image>
-                        <view class="info">
-                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
-                        <view class="basic-wrapperr">
-                            <view class="row">
-                            <view class="col-4">申请时间:{{item.ctime}}</view>
-                            </view>
-                        </view>
-                        </view>
-                    </navigator>
-                    </view>
-                </block>
-            </view>
-            <template is="foot"></template>
+<view hidden="{{currentTab!==0}}">
+  <view class="html">
+    <view class="body">
+      <view class="list-content">
+        <view class="normal-tips commen-split" style="font-size: 30rpx;">我{{ty}}的项目有
+          <text style="color:#F08080;">{{data.length}}</text>个，当前页有
+          <text style="color:#5cb85c">{{data.length}}</text>个。
         </view>
+      </view>
+      <view class="ul2 flex">
+        <block wx:for="{{data}}" wx:key="item">
+          <view class="li-main">
+            <navigator url='/pages/audit/audit?id={{item._id}}'>
+              <view class="li2">
+                <image src="{{item.img[0]}}" class="img"></image>
+                <view class="item-title">{{item.name}}</view>
+                <view class="item-time">{{item.ctime}}</view>
+                <view class="money-day flex">
+                  <view class="">目标：<text style='color:#00aac5'>{{item.tmoney}}</text>元</view>
+                </view>
+                <view class='state green' wx:if="{{item.state == 2}}">{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 3}}" class='state red'>{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 1}}" class='state blue'>{{item.stateDesc}}</view>
+                <view class='state' wx:else>{{item.stateDesc}}</view>
+              </view>
+            </navigator>
+          </view>
+        </block>
+      </view>
     </view>
+  </view>
 </view>
-
-<!--未审核-->
-<view hidden="{{currentTab!==1}}">  
-    <view class="html">
-        <view class="body">
-            <view class="list-content">
-                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{notData.length}}</text>个。</view>
-            </view>
-            <view class="conter">
-                <block wx:for="{{notData}}" wx:key="item">
-                    <view class=" ">
-                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
-                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
-                            <text style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(0,0,0,0.8);color:#fff">未审批</text>
-                        </image>
-                        <view class="info">
-                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
-                        <view class="basic-wrapperr">
-                            <view class="row">
-                            <view class="col-4">申请时间:{{item.ctime}}</view>
-                            </view>
-                        </view>
-                        </view>
-                    </navigator>
-                    </view>
-                </block>
-            </view>
-            <template is="foot"></template>
+<!--进行中-->
+<view hidden="{{currentTab!==1}}">
+  <view class="html">
+    <view class="body">
+      <view class="list-content">
+        <view class="normal-tips commen-split" style="font-size: 30rpx;">我{{ty}}的项目有
+          <text style="color:#F08080;">{{ongData.length}}</text>个还未审核，当前页有
+          <text style="color:#5cb85c">{{ongData.length}}</text>个。
         </view>
+      </view>
+      <view class="ul2 flex">
+        <block wx:for="{{ongData}}" wx:key="item">
+          <view class="li-main">
+            <navigator url='/pages/audit/audit?id={{item._id}}'>
+              <view class="li2">
+                <image src="{{item.img[0]}}" class="img"></image>
+                <view class="item-title">{{item.name}}</view>
+                <view class="item-time">{{item.ctime}}</view>
+                <view class="money-day flex">
+                  <view class="">目标：<text style='color:#00aac5'>{{item.tmoney}}</text>元</view>
+                </view>
+                <view class='state green' wx:if="{{item.state == 2}}">{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 3}}" class='state red'>{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 1}}" class='state blue'>{{item.stateDesc}}</view>
+                <view class='state' wx:else>{{item.stateDesc}}</view>
+              </view>
+            </navigator>
+          </view>
+        </block>
+      </view>
     </view>
+  </view>
 </view>
-<!--已审核-->
-<view hidden="{{currentTab!==2}}">  
-    <view class="html">
-        <view class="body">
-            <view class="list-content">
-                <view class="normal-tips commen-split" style="font-size: 30rpx;">我发起的项目有 <text style="color:#F08080;">{{data.length}}</text>个，当前页有<text style="color:#5cb85c">{{hasData.length}}</text>个。</view>
-            </view>
-            <view class="conter">
-                <block wx:for="{{hasData}}" wx:key="item">
-                    <view class=" ">
-                    <navigator url="/pages/my/fqxq/fqxq?id={{item._id}}" class="store">
-                        <image src="{{item.img}}" mode="aspectFill" class="p-img">
-                            <text wx:if="{{item.state == 2}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(190,20,20,0.8);color:#fff">审核通过</text>  
-                            <text wx:elif="{{item.state == 3}}" style="position:absolute;width:250rpx;height:55rpx;margin-top:-54rpx;text-align: center;background-color: rgba(104,213,107,0.8);color:#fff">审核不通过</text>
-                        </image>
-                        <view class="info">
-                        <view class="name" style="text-align:left"><text>{{item.name}}</text></view>
-                        <view class="basic-wrapperr">
-                            <view class="row">
-                            <view class="col-4">申请时间:{{item.ctime}}</view>
-                            </view>
-                        </view>
-                        </view>
-                    </navigator>
-                    </view>
-                </block>
-            </view>
-            <template is="foot"></template>
+<!--已结束-->
+<view hidden="{{currentTab!==2}}">
+  <view class="html">
+    <view class="body">
+      <view class="list-content">
+        <view class="normal-tips commen-split" style="font-size: 30rpx;">我{{ty}}的项目有
+          <text style="color:#F08080;">{{endData.length}}</text>个已审核，当前页有
+          <text style="color:#5cb85c">{{endData.length}}</text>个。
         </view>
+      </view>
+      <view class="ul2 flex">
+        <block wx:for="{{endData}}" wx:key="item">
+          <view class="li-main">
+            <navigator url='/pages/audit/audit?id={{item._id}}'>
+              <view class="li2">
+                <image src="{{item.img[0]}}" class="img"></image>
+                <view class="item-title">{{item.name}}</view>
+                <view class="item-time">{{item.ctime}}</view>
+                <view class="money-day flex">
+                  <view class="">目标：<text style='color:#00aac5'>{{item.tmoney}}</text>元</view>
+                </view>
+                <view class='state green' wx:if="{{item.state == 2}}">{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 3}}" class='state red'>{{item.stateDesc}}</view>
+                <view wx:elif="{{item.state == 1}}" class='state blue'>{{item.stateDesc}}</view>
+                <view class='state' wx:else>{{item.stateDesc}}</view>
+              </view>
+            </navigator>
+          </view>
+        </block>
+      </view>
     </view>
+  </view>
 </view>

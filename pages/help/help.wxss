@@ -241,6 +241,7 @@
   position: relative;
   top: -50rpx;
   left: 390rpx;
+  width: 200rpx;
 }
 
 page {

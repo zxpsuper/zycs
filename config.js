@@ -47,7 +47,7 @@ const jkxq = `${host}/donations/`
 //支持、关注、见证、跟进
 const details = `${host}/usercenter/projects/`
 //发起的项目
-const faqi = `${host}/my/helps/`
+const faqi = `${host}/my/helps`
 //发起详情
 const fqxqImg = `${host}/help/fileList`
 const fqxq = `${host}/help/`

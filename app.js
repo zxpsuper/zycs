@@ -6,7 +6,7 @@ const eid = require('./config').eid
 const loginUrl = require('./config').loginUrl
 App({
   onLaunch: function () {
-    // this.getJwt()
+    //this.getJwt()
     this.login()
     this.getOrgParam()
     //调用API从本地缓存中获取数据
@@ -19,6 +19,10 @@ App({
     orgParam: '',
     captchaId:'',
     captchaTxt:''
+  },
+  getJwt(){
+    let jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNThlYTMwNjcxNDk4M2Q1ODU4ODc4YzM0Iiwib3BlbmlkIjoibzFobUh4Rk9GTVo3dnNRZjlDc1JlVVBnRFlQayIsImVpZCI6Inp5IiwibmFtZSI6IuW8oOS4iSIsImhlYWRpbWd1cmwiOiJodHRwOi8vd3gucWxvZ28uY24vbW1vcGVuL1EzYXVIZ3p3ek03REY1MFlmdDNxeE1xM3Z2WVQ3aHRkWnpZajFWaWJvaWJpYnk5ajQ2ZWN2Q205a2NaelZKMUVib01QYzd1dERqRHg5TlB2YjhOcTdVYWpqQmtJZmljc3RYRjlvaEU5TU9aY1ZISS8wIiwiYWRkcmVzcyI6IuW5v-S4nOecgeW5v-W3nuW4giIsImlhdCI6MTUwNzUxNjAxOCwiZXhwIjoxNTA4ODEyMDE4fQ.x2idFSfsc5FK7OEwLazueiPtUv_PQfjWZ5O4DNdlasA.B9RovD_-hRHl7dn2_wbjmhSThB239VSevWftAn9zWV0"
+    wx.setStorageSync('jwt', jwt)
   },
   login(redirectUrl) {
     let _this = this
@@ -45,9 +49,11 @@ App({
                   console.log('token = ', res)
                   if (res.data.result_code == 1 && res.data.result.jwt) {
                     wx.setStorageSync('jwt', res.data.result.jwt)
-                    if (redirectUrl) wx.switchTab({
-                      url: '/pages/index/index'
-                    })
+                    if (redirectUrl) {
+                      wx.navigateTo({
+                        url: '/pages/index/index',
+                      })
+                    }
                   }
                 },
                 fail: function () {
@@ -72,6 +78,7 @@ App({
       },
       complete: function () {
         // complete
+        
       }
     })
   },
@@ -133,6 +140,9 @@ App({
   },
   formatDate(date, format) {
     return date && new Date(date).getTime() === new Date(date).getTime() && this._formatDate(new Date(date), format || 'yyyy-MM-dd hh:mm')
+  },
+  formatDate1(date, format) {
+    return date && new Date(date).getTime() === new Date(date).getTime() && this._formatDate(new Date(date), format || 'yyyy年MM月dd日')
   },
   /*验证码*/
   guid() {

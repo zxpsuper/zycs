@@ -2,6 +2,9 @@ const host = require('../../config').host
 const zctjUrl = require('../../config').zctj
 const zxcqUrl = require('../../config').zxcq
 const imgUrl = require('../../config').img
+const loginUrl = require('../../config').loginUrl
+const eid = require('../../config').eid
+
 //index.js
 //获取应用实例
 var app = getApp()
@@ -56,9 +59,70 @@ Page({
       }
     ]
   },
+  // 页面加载
   onLoad: function () {
-    let data = this.data
-    app.login()
+    console.log('cscsdf')
+    console.log()
+    this.logins()
+  },
+  // 登录
+  logins() {
+    let _this = this
+    wx.login({
+      success: function (res) {
+        wx.showLoading({
+          title: '正在载入',
+        })
+        // success
+        if (res.code) {
+          let code = res.code
+          wx.getUserInfo({
+            success: function (res) {
+              // success
+              wx.request({
+                url: loginUrl,
+                data: {
+                  code,
+                  eid,
+                  rawData: res.rawData,
+                  signature: res.signature
+                },
+                method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
+                success: function (res) {
+                  // success
+                  if (res.data.result_code == 1 && res.data.result.jwt) {
+                    wx.setStorageSync('jwt', res.data.result.jwt)
+                    _this.zctj()
+                    _this.zxcq()
+                    _this.img()
+                    wx.hideLoading()
+                  }
+                },
+                fail: function () {
+                  // fail
+                },
+                complete: function () {
+                  // complete
+                }
+              })
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          })
+        }
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   },
   // 轮播图跳转
   goto: function (e) {
@@ -68,7 +132,6 @@ Page({
       url: `../project/happysixone/happy?id=${projectId}`,
       success: function (res) {
         // success
-        console.log('projectId', projectId)
       },
       fail: function (res) {
         // fail
@@ -107,7 +170,6 @@ Page({
         // complete
       }
     })
-
   },
   //最新长期
   zxcq() {
@@ -187,8 +249,5 @@ Page({
   },
   onShow: function () {
     // 生命周期函数--监听页面显示
-    this.zctj()
-    this.zxcq()
-    this.img()
   }
 })

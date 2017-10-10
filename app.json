@@ -1,18 +1,21 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/me/me",
+    "pages/me/faqi/faqi",
+    "pages/certificate/certificate",
     "pages/donation/donation",
     "pages/discover/discover",
     "pages/jianzheng/jianzheng",
     "pages/jubao/jubao",
-    "pages/me/me",
+    "pages/audit/audit",
     "pages/project/helphim/helphim",
     "pages/pay/paying/paying",
     "pages/axjl/axjl",
     "pages/axly/axly",
+    "pages/help/help",
     "pages/project/happysixone/happy",
     "pages/me/axjl/axjl",
-    "pages/me/faqi/faqi",
     "pages/me/details/details",
     "pages/me/axxq/axxq",
     "pages/me/advice/advice",
@@ -43,6 +46,12 @@
         "iconPath": "images/ft-discovery.png",
         "pagePath": "pages/discover/discover",
         "text": "发现"
+      },
+      {
+        "selectedIconPath": "images/ft-shelp-on.png",
+        "iconPath": "images/ft-shelp.png",
+        "pagePath": "pages/help/help",
+        "text": "求助"
       },
       {
         "selectedIconPath": "images/ft-me-on.png",

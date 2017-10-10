@@ -19,7 +19,7 @@ Page({
     this.setData({
       serve: 0
     })
-    console.log('serve', serve)
+    console.log('serve', this.data.serve)
   },
   // 关闭服务条款
   close: function () {
@@ -95,16 +95,24 @@ Page({
     console.log(this.data.code.toUpperCase())
     if (this.data.code.toUpperCase() === captchaTxt) {
       if (this.data.radio == 1) {
-        if (closingTime && tmoney && name && explainText && linkName && phone && houseNum && houseValue && houseState && carNum && carValue && carState && captchaTxt && captchaId && publicMode) {
+        if (closingTime && tmoney && name && explainText && linkName && phone && houseNum && houseValue && houseState && carNum && carValue && carState && captchaTxt && captchaId && publicMode && img) {
           wx.request({
             url: `${host2}/wx/help/add`,
-            data: { closingTime, tmoney, name, explainText, linkName, phone, houseNum, houseValue, houseState, carNum, carValue, carState, seriousInsurance, medicalInsurance, captchaId, captchaTxt, publicMode },
+            data: { closingTime, tmoney, name, explainText, linkName, phone, houseNum, houseValue, houseState, carNum, carValue, carState, seriousInsurance, medicalInsurance, captchaId, captchaTxt, publicMode, img},
             method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + wx.getStorageSync('jwt') }, // 设置请求的 header
             success: function (res) {
               // success
               if (res.data.result_code === 1) {
                 console.log('测试成功')
+                wx.showToast({
+                  title: '提交成功',
+                })
+              } else {
+                wx.showModal({
+                  title: `${res.data.message}`,
+                  content: '请重新输入',
+                })
               }
             },
             fail: function (res) {

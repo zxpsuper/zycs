@@ -1,0 +1,144 @@
+<!--pages/audit/audit.wxml-->
+<view class='name'>{{data.name}}</view>
+<block wx:if="{{data.state == 4}}">
+  <view class='stateUl'>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>1</view>
+      </view>
+      <view>未审批</view>
+    </view>
+    <view class='li'>
+      <view class='numberwrap'>
+        <view class='number'>2</view>
+      </view>
+      <view>审批中</view>
+    </view>
+    <view class='li'>
+      <view class='numberwrap'>
+        <view class='number'>3</view>
+      </view>
+      <view>结果</view>
+    </view>
+  </view>
+  <view class='result'>
+    <view class='title'>未审批</view>
+    <view class='desc'>请耐心等待工作人员审批</view>
+  </view>
+</block>
+
+<block wx:elif="{{data.state == 1}}">
+  <view class='stateUl'>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>1</view>
+      </view>
+      <view>未审批</view>
+    </view>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>2</view>
+      </view>
+      <view>审批中</view>
+    </view>
+    <view class='li'>
+      <view class='numberwrap'>
+        <view class='number'>3</view>
+      </view>
+      <view>结果</view>
+    </view>
+  </view>
+  <view class='result'>
+    <view class='title'>审批中</view>
+    <view class='desc'>工作人员正在审批中...</view>
+  </view>
+</block>
+
+<block wx:else>
+  <view class='stateUl'>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>1</view>
+      </view>
+      <view>未审批</view>
+    </view>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>2</view>
+      </view>
+      <view>审批中</view>
+    </view>
+    <view class='li active'>
+      <view class='numberwrap'>
+        <view class='number'>3</view>
+      </view>
+      <view>结果</view>
+    </view>
+  </view>
+  <view class='result' wx:if="{{data.state == 2}}">
+    <view class='title'>审批通过</view>
+    <view class='desc'>{{data.resultText}}</view>
+  </view>
+  <view class='result' wx:else>
+    <view class='title'>审批未通过</view>
+    <view class='desc'>求助没有通过审批。原因：{{data.resultText}}</view>
+  </view>
+</block>
+
+<view class='moneyTime'>
+  <view class='tmoney'>筹款金额：<text style='color:#00aac5'>￥{{data.tmoney}}</text></view>
+  <view class='endTime'>
+    截止时间：{{data.closingTime}}
+  </view>
+</view>
+<image class='img' src='{{data.img[0]}}' mode="widthFix"></image>
+
+<view class='detail'>
+  <view class='detail-title'>项目详情</view>
+  <view class="project-detail">
+    {{data.content}}
+  </view>
+</view>
+
+<view class='more'>
+  <view class='more-title'>增信补充</view>
+  <view class='more-detail'>
+    <view class='h1'>患者家庭房屋财产状况</view>
+    <view class='flex'>
+      <view>房屋数量</view>
+      <view>{{data.houseNum}}</view>
+    </view>
+    <view class='flex'>
+      <view>房产价格</view>
+      <view>{{data.houseValue}}</view>
+    </view>
+    <view class='flex'>
+      <view>房产状态</view>
+      <view>{{data.houseState}}</view>
+    </view>
+    <view class='h1'>患者家庭车辆财产状况</view>
+    <view class='flex'>
+      <view>车辆数量</view>
+      <view>{{data.carNum}}</view>
+    </view>
+    <view class='flex'>
+      <view>车辆价格</view>
+      <view>{{data.carValue}}</view>
+    </view>
+    <view class='flex'>
+      <view>车辆状态</view>
+      <view>{{data.carState}}</view>
+    </view>
+    <view class='h1'>{{data.seriousInsurance}}</view>
+    <view class='h1'>{{data.medicalInsurance}}</view>
+  </view>
+  <view class='promise'>
+    <view class='h1'>救助人承诺书</view>
+    <view>
+    项目求助人已承诺，涉及本项目的文字、图片、证明等相关信息完全真实、有效，且不存在未经他人授权冒用他人名义进行求助的行为，本人收到的全部救助款项将直接用于被救助人的救助，不另行挪作他用。若发起人存在违反上述承诺的行为，愿自行承担全部法律责任。
+    </view>
+    <view class='tipss'>
+    该项目信息不属于慈善公开募捐信息，众筹系统提示您了解项目后再帮助Ta。
+    </view>
+  </view>
+</view>

@@ -72,6 +72,11 @@ color:#fff;
 }
 
 .coltext{
+  display: inline-block;
+  width: 320rpx;
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   font-size: 30rpx;
   padding-top: 20rpx;
   color: #000000;

@@ -100,7 +100,11 @@ Page({
       success: ({data}) => {
         console.log('1111 = ', data)
         if (data.result_code == 1) {
-          _this.setData({ donationId: data.result._id })
+          _this.setData({ 
+            donationId: data.result._id,
+            orderNo: data.result.orderNo
+          })
+          console.log('orderNo', this.data.orderNo)
           _this.donationDetails(_this.data.donationId)
         }
       }
@@ -172,8 +176,11 @@ Page({
                   payResult: '支付成功',
                   imageName: 'http://ui.zc.gongyicishan.net/wx-ui/images/order-success.png'
                 })
-                // setTimeout(() => {
-                // },1000)
+                setTimeout(() => {
+                  wx.navigateTo({
+                    url: `/pages/donation/donation?num=${_this.data.orderNo}`,
+                  })
+                }, 500)
               } else {
                 _this.setData({
                   payResult: '支付失败',
@@ -215,6 +222,12 @@ Page({
             payResult: '支付成功',
             imageName: 'http://ui.zc.gongyicishan.net/wx-ui/images/order-success.png'
           })
+          setTimeout(() => {
+            wx.navigateTo({
+              url: `/pages/donation/donation?num=${_this.data.orderNo}`,
+            })
+          }, 500)
+          
         } else {
           _this.setData({
             payResult: '支付失败',

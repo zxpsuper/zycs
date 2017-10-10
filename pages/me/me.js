@@ -9,11 +9,11 @@ Page({
     userInfo: '',
     adHidden: 'hidden',
     userinfo2: [
-      //   {
-      //   src: "../images/help.png",
-      //   text: "我求助的",
-      //   url: "/pages/me/faqi/faqi?id={{data.id}}"
-      // },
+        {
+        src: "http://ui.zc.gongyicishan.net/wx-ui/images/help.png?ts=v1",
+        text: "我求助的",
+        url: "/pages/me/faqi/faqi?id=faqi"
+      },
       {
         src: "http://ui.zc.gongyicishan.net/wx-ui/images/support.png",
         text: "我支持的",
@@ -126,9 +126,11 @@ Page({
             adImgPath: res.data.result.imgPath,
             adDetail: R_htmlToWxml.html2json(res.data.result.detail.replace(/&nbsp;/g, ' ').replace(/^<noscript>.*<noscript>$/, ' ').replace(/<br>/g, '\n')),
             adId: res.data.result._id,
-            adUrl: res.data.result.url
+            adUrl: res.data.result.url,
+            adDetails: res.data.result.detail
           })
           console.log('adres', res.data)
+          console.log('adDetails', this.data.adDetails)
         }
       },
       fail: function (res) {

@@ -60,3 +60,7 @@ page {
   line-height: 78rpx;
 }
 
+page{
+  width: 100%;
+  overflow-x: hidden;
+}

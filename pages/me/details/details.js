@@ -2,6 +2,7 @@ const host = require('../../../config').host
 const url = require('../../../config').details
 const host2 = require('../../../config').host2
 var R_htmlToWxml = require('../../../utils/htmlToWxml.js')
+const dateFunction = require('../../../utils/util.js')
 let typea
 Page({
   data: {
@@ -227,6 +228,7 @@ Page({
         console.log('allres', res)
     
         for (let i = 0; i < res.data.result.list.length;i++){
+          res.data.result.list[i].ctime = dateFunction.formatTime(new Date(res.data.result.list[i].ctime))
           let today = new Date()
           let timerToday = today.getTime()
           let cha = (timerToday - res.data.result.list[i].stime) / 1000 / 3600 / 24
@@ -276,6 +278,7 @@ Page({
         // success
         console.log('res', res)
         for (let i = 0; i < res.data.result.list.length; i++) {
+          res.data.result.list[i].ctime = dateFunction.formatTime(new Date(res.data.result.list[i].ctime))          
           let today = new Date()
           let timerToday = today.getTime()
           let cha = (timerToday - res.data.result.list[i].stime) / 1000 / 3600 / 24
@@ -325,6 +328,7 @@ Page({
         // success
         console.log('res', res)
         for (let i = 0; i < res.data.result.list.length; i++) {
+          res.data.result.list[i].ctime = dateFunction.formatTime(new Date(res.data.result.list[i].ctime))          
           let today = new Date()
           let timerToday = today.getTime()
           let cha = (timerToday - res.data.result.list[i].stime) / 1000 / 3600 / 24

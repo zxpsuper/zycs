@@ -100,9 +100,14 @@ navigator {
 }
 
 .rectext {
+  display: inline-block;
+  width: 320rpx;
   margin: 0 10rpx 0 8rpx;
   flex: 1;
   color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .flex {
@@ -165,10 +170,14 @@ navigator {
 }
 
 .coltext {
+  display: inline-block;
+  width: 320rpx;
   font-size: 30rpx;
-  padding-top: 20rpx;
   color: #000;
   padding-left: 8rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .detail2 {

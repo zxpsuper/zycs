@@ -29,11 +29,13 @@ Page({
       }
     ],
   },
+  // 关闭广告
   closeAd: function () {
     this.setData({
       adHidden: 'hidden'
     })
   },
+  //复制广告链接
   copyAd: function () {
     this.setData({
       adHidden: 'hidden'
@@ -72,6 +74,7 @@ Page({
       content: '网址已成功复制于剪贴板，请于浏览器中打开',
     })
   },
+  // 显示广告
   showad: function () {
     this.setData({
       adHidden: ''
@@ -234,6 +237,7 @@ Page({
       }
     })
   },
+  // 下拉刷新
   onPullDownRefresh: function () {
     wx.showToast({
       title: 'loading...',

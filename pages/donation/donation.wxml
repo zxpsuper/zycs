@@ -3,19 +3,19 @@
   <view class="ul"> 
     <view class="li flex"> 
       <view class="title">捐款编号：</view>
-      <view class="content">45464564213212316441231sdfadfasdfasdfafadfafd311</view>
+      <view class="content">{{data.orderNo}}</view>
     </view>
     <view class="li flex"> 
       <view class="title">项目名称：</view>
-      <view class="content">大爱无疆</view>
+      <view class="content">{{data.project.name}}</view>
     </view>
     <view class="li flex"> 
       <view class="title">捐款金额：</view>
-      <view class="content">￥425</view>
+      <view class="content">￥{{data.money}}</view>
     </view>
     <view class="li flex"> 
       <view class="title">捐款时间：</view>
-      <view class="content">2017-07-29 13：11:20</view>
+      <view class="content">{{data.ctime}}</view>
     </view>
     <view class="li flex"> 
       <view class="title">支付状态：</view>
@@ -23,10 +23,11 @@
     </view>
     <view class="li flex"> 
       <view class="title">支付方式：</view>
-      <view class="content">微信支付</view>
+      <view class="content" wx:if="{{data.payType === '0'}}">微信支付</view>
+       <view class="content" wx:if="{{data.payType === '1'}}">支付宝支付</view>
     </view>
   </view>
   <view class="bottom">
-    <view class="btn">获取证书</view>
+    <view class="btn" bindtap="getcertificate">获取证书</view>
   </view>
 </view>

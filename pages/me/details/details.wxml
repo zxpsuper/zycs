@@ -33,7 +33,7 @@
               <view class="li2">
                 <image src="{{item.imgPath}}" class="img"></image>
                 <view class="item-title">{{item.name}}</view>
-                <view class="item-time">2017-05-10 12:10:41</view>
+                <view class="item-time">{{item.ctime}}</view>
                 <view class="money-day flex">
                   <view class="money">￥{{item.dmoney}}</view>
                   <view class="classname">
@@ -72,7 +72,7 @@
               <view class="li2">
                 <image src="{{item.imgPath}}" class="img"></image>
                 <view class="item-title">{{item.name}}</view>
-                <view class="item-time">2017-05-10 12:10:41</view>
+                <view class="item-time">{{item.ctime}}</view>
                 <view class="money-day flex">
                   <view class="money">￥{{item.dmoney}}</view>
                   <view class="classname">
@@ -111,7 +111,7 @@
               <view class="li2" wx:for="{{endData}}" wx:key="item">
                 <image src="{{item.imgPath}}" class="img"></image>
                 <view class="item-title">{{item.name}}</view>
-                <view class="item-time">2017-05-10 12:10:41</view>
+                <view class="item-time">{{item.ctime}}</view>
                 <view class="money-day flex">
                   <view class="money">￥{{item.dmoney}}</view>
                   <view class="">
