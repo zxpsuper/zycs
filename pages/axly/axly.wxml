@@ -28,7 +28,8 @@
 </view>
 <!--留言板-->
 <view class="message" wx:for="{{dataa}}" wx:key="item">
-  <image src="{{item.user.headimgurl}}" class="img"></image>
+  <image src="{{item.user.headimgurl}}" class="img" wx:if="{{item.user.headimgurl}}"></image>
+  <image src="http://img3.imgtn.bdimg.com/it/u=1359535639,2555808147&fm=214&gp=0.jpg" class="img" wx:else></image>
   <view class="name">
     <text>{{item.user.nickname}}</text>
   </view>

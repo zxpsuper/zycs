@@ -454,6 +454,7 @@ image {
   line-height: 80rpx;
   text-align: center;
   margin-left: 98rpx;
+  margin-top:10rpx;
 }
 
 .system-message {

@@ -30,7 +30,6 @@ Page({
     this.projectInfo()
     this.setData({ payMoney: wx.getStorageSync('money') })
     this.setData({ payResult: '正在进行安全支付，请耐心等待' })
-    this.setDonation()
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -80,7 +79,8 @@ Page({
         _this.setData({
           data: res.data.result
         })
-
+        console.log('kaka', this.data.data)
+        this.setDonation()
       }
     })
   },

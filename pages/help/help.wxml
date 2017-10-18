@@ -61,10 +61,10 @@
     <text class="text1">房产状态</text>
     <radio-group class="radio-group" bindchange="radioChange"  name='houseState'>
       <label class="radio">
-        <radio value="未变卖" color="#00aac5"/>未变卖
+        <radio value="0" color="#00aac5"/>未变卖
       </label>
       <label class="radio">
-        <radio value="已变卖" color="#00aac5"/>已变卖
+        <radio value="1" color="#00aac5"/>已变卖
       </label>
     </radio-group>
   </view>
@@ -85,10 +85,10 @@
     <text class="text1">汽车状态</text>
     <radio-group class="radio-group" bindchange="radioChange"  name="carState">
       <label class="radio">
-        <radio value="未变卖" color="#00aac5"/>未变卖
+        <radio value="0" color="#00aac5"/>未变卖
       </label>
       <label class="radio">
-        <radio value="已变卖" color="#00aac5"/>已变卖
+        <radio value="1" color="#00aac5"/>已变卖
       </label>
     </radio-group>
   </view>

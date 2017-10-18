@@ -22,7 +22,8 @@
   </view>
 </view>
 <view wx:for="{{dataa}}" class="record">
-  <image src="{{item.user.headimgurl}}" class="record-img"></image>
+  <image src="{{item.user.headimgurl}}" class="record-img" wx:if="{{item.user.headimgurl}}"></image>
+  <image src="http://img3.imgtn.bdimg.com/it/u=1359535639,2555808147&fm=214&gp=0.jpg" class="record-img" wx:else></image>  
   <view class="record-username">{{item.user.nickname}}</view>
   <view class="word9" wx:if="{{item.reply.content}}">
     <view><text style="color:#00aac5">管理员：</text>{{item.reply.content}}</view>
